@@ -256,7 +256,7 @@
     if (navLinks[0]) navLinks[0].textContent = content.navServices;
     if (navLinks[1]) navLinks[1].textContent = content.navContact;
     const brandText = document.getElementById("brandText");
-    if (brandText) brandText.textContent = nextLang === "en" ? "PICASOW" : "פיקאסו";
+    if (brandText) brandText.textContent = nextLang === "en" ? "PICASOW" : "\u05e4\u05d9\u05e7\u05d0\u05e1\u05d5";
 
     const firstLine = document.querySelector(".hero__line");
     if (firstLine && firstLine.firstChild) firstLine.firstChild.textContent = `${content.heroLead} `;
