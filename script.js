@@ -2,7 +2,6 @@
 
   const BENEFITS_KEY = "site-hero-benefits";
   const THEME_KEY = "site-theme-mode";
-  const LANG_KEY = "site-lang";
 
   const doc = document.documentElement;
   let currentLang = "he";
@@ -32,13 +31,6 @@
     );
   }
 
-  function getStoredLang() {
-    try {
-      return localStorage.getItem(LANG_KEY);
-    } catch {
-      return null;
-    }
-  }
 
   function applyTheme(theme) {
     if (theme === "dark") doc.setAttribute("data-theme", "dark");
@@ -57,12 +49,6 @@
     doc.setAttribute("data-lang", nextLang);
     doc.setAttribute("lang", nextLang);
     doc.setAttribute("dir", nextLang === "en" ? "ltr" : "rtl");
-    try {
-      localStorage.setItem(LANG_KEY, nextLang);
-    } catch {
-      /* ignore */
-    }
-
     const content = nextLang === "en"
       ? {
         pageTitle: "Picasow | Web Design, Development and Business Growth",
@@ -526,7 +512,7 @@
 
 
 
-  applyLanguage(getStoredLang() === "en" ? "en" : "he");
+  applyLanguage("he");
   initBenefits();
   applyTheme(getStoredTheme() === "dark" ? "dark" : "light");
 
