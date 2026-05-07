@@ -148,6 +148,8 @@
         document.querySelectorAll("[data-he][data-en]").forEach((el) => {
           el.textContent = lang === "en" ? el.getAttribute("data-en") : el.getAttribute("data-he");
         });
+        const brand = document.querySelector(".hero__brand-text");
+        if (brand) brand.textContent = lang === "en" ? "PICASOW" : "\u05e4\u05d9\u05e7\u05d0\u05e1\u05d5";
         waLangLinks.forEach((link) => {
           link.href = lang === "en" ? link.getAttribute("data-wa-en") : link.getAttribute("data-wa-he");
         });
