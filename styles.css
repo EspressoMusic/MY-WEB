@@ -440,8 +440,8 @@ html[data-a11y-spacing="true"] body {
 }
 
 .hero__brand-text {
-  font-family: "SuperBlocky", "Thesead", "Nuqun", "OutlineStyle", serif;
-  font-weight: 400;
+  font-family: "Heebo", sans-serif;
+  font-weight: 800;
   font-size: clamp(1.6rem, 2.8vw, 1.95rem);
   letter-spacing: 0.03em;
 }
@@ -2299,6 +2299,12 @@ html[data-lang="en"] body *,
 html[lang="en"] body * {
   font-family: "SuperWonder", sans-serif !important;
   letter-spacing: 0.02em;
+}
+
+html[data-lang="en"] .hero__brand-text,
+html[lang="en"] .hero__brand-text {
+  font-family: "SuperBlocky", "SuperWonder", sans-serif !important;
+  letter-spacing: 0.03em;
 }
 
 /* Accessibility */

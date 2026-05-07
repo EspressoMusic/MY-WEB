@@ -255,6 +255,8 @@
     const navLinks = document.querySelectorAll(".hero__nav a");
     if (navLinks[0]) navLinks[0].textContent = content.navServices;
     if (navLinks[1]) navLinks[1].textContent = content.navContact;
+    const brandText = document.getElementById("brandText");
+    if (brandText) brandText.textContent = nextLang === "en" ? "PICASOW" : "פיקאסו";
 
     const firstLine = document.querySelector(".hero__line");
     if (firstLine && firstLine.firstChild) firstLine.firstChild.textContent = `${content.heroLead} `;
