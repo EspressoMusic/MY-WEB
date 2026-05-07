@@ -75,7 +75,6 @@
         <p class="landing-sub" data-he="אנחנו בונים אתרי מסעדות שמציגים את התפריט נכון, מחזקים את המותג ומניעים להזמנה בלחיצה אחת." data-en="We build restaurant websites that showcase your menu clearly and turn traffic into bookings.">אנחנו בונים אתרי מסעדות שמציגים את התפריט נכון, מחזקים את המותג ומניעים להזמנה בלחיצה אחת.</p>
         <div class="landing-cta">
           <a class="btn btn--gradient" href="https://wa.me/972586122187?text=שלום%20אני%20רוצה%20אתר%20למסעדה" target="_blank" rel="noopener noreferrer" data-he="לשיחת וואטסאפ" data-en="WhatsApp Consultation">לשיחת וואטסאפ</a>
-          <button type="button" class="btn btn--black" id="langToggleRestaurant">English</button>
         </div>
       </div>
     </section>
@@ -111,7 +110,25 @@
         <details class="faq-item"><summary data-he="אפשר לשלב הזמנה דרך וואטסאפ?" data-en="Can WhatsApp booking be integrated?">אפשר לשלב הזמנה דרך וואטסאפ?</summary><p data-he="כן, בלחיצה אחת מהאתר." data-en="Yes, with one-click access directly from the page.">כן, בלחיצה אחת מהאתר.</p></details>
       </div>
     </section>
+    <section class="mini-game section" aria-label="Footer actions">
+      <div class="terms-trigger-wrap">
+        <button type="button" class="a11y-fab" id="landingA11yTrigger" aria-label="פתיחת תפריט נגישות">
+          <svg class="a11y-fab__icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M12 2.5a2.1 2.1 0 1 1 0 4.2 2.1 2.1 0 0 1 0-4.2Zm-2.7 6.2a1.3 1.3 0 0 1 1.3-1.2h2.3a2.3 2.3 0 0 1 2.3 2.3v2.5h2.3a1.1 1.1 0 1 1 0 2.2h-3.4a1.1 1.1 0 0 1-1.1-1.1V10h-.7l.7 6.1h2.1a2.1 2.1 0 0 1 2 1.6l1 4a1.1 1.1 0 1 1-2.1.5l-.8-3.3h-2.6a3.4 3.4 0 0 1-3.4-3l-.7-6.5v-.1Zm-1.7 4.9a1.1 1.1 0 0 1 1.5.3A5.4 5.4 0 1 0 20 18a1.1 1.1 0 1 1 2.2 0 7.6 7.6 0 1 1-14.3-4.2 1.1 1.1 0 0 1-.3-.2Z"/>
+          </svg>
+        </button>
+        <button type="button" class="terms-trigger terms-trigger--lang terms-trigger--lang-square" id="langToggleRestaurant">EN</button>
+      </div>
+    </section>
   </main>
+  <div class="a11y-modal" id="landingA11yModal" aria-hidden="true">
+    <div class="a11y-modal__backdrop" data-close-landing-a11y></div>
+    <section class="a11y-modal__panel" role="dialog" aria-modal="true" aria-labelledby="landingA11yTitle">
+      <button type="button" class="a11y-modal__close" data-close-landing-a11y aria-label="סגירה">×</button>
+      <h2 id="landingA11yTitle">נגישות</h2>
+      <p class="a11y-modal__text">לסיוע בנגישות ניתן לפנות ל־<a href="mailto:shilohdhd1@gmail.com">shilohdhd1@gmail.com</a>.</p>
+    </section>
+  </div>
   <div class="cursor-dot" id="cursorDot" aria-hidden="true">
     <span class="cursor-dot__label">תלחץ עליי</span>
   </div>
@@ -119,15 +136,30 @@
     (function () {
       const html = document.documentElement;
       const btn = document.getElementById("langToggleRestaurant");
+      const a11yModal = document.getElementById("landingA11yModal");
+      const a11yTrigger = document.getElementById("landingA11yTrigger");
+      const a11yCloseEls = document.querySelectorAll("[data-close-landing-a11y]");
       function applyLang(lang) {
         html.lang = lang;
         html.dir = lang === "en" ? "ltr" : "rtl";
         document.querySelectorAll("[data-he][data-en]").forEach((el) => {
           el.textContent = lang === "en" ? el.getAttribute("data-en") : el.getAttribute("data-he");
         });
-        btn.textContent = lang === "en" ? "עברית" : "English";
+        btn.textContent = lang === "en" ? "עב" : "EN";
       }
       btn.addEventListener("click", () => applyLang(html.lang === "he" ? "en" : "he"));
+      if (a11yTrigger && a11yModal) {
+        a11yTrigger.addEventListener("click", () => {
+          a11yModal.classList.add("is-open");
+          a11yModal.setAttribute("aria-hidden", "false");
+        });
+        a11yCloseEls.forEach((el) => {
+          el.addEventListener("click", () => {
+            a11yModal.classList.remove("is-open");
+            a11yModal.setAttribute("aria-hidden", "true");
+          });
+        });
+      }
     })();
     (function () {
       const cursorDot = document.getElementById("cursorDot");

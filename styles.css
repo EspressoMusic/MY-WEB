@@ -34,6 +34,17 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "SuperBlocky";
+  src:
+    url("./Super%20Blocky.ttf") format("truetype"),
+    local("Super Blocky"),
+    local("SuperBlocky");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   /* Walls stay bright in every theme */
   --wall: #f3f3f5;
@@ -429,10 +440,10 @@ html[data-a11y-spacing="true"] body {
 }
 
 .hero__brand-text {
-  font-family: "Thesead", "Nuqun", "OutlineStyle", serif;
+  font-family: "SuperBlocky", "Thesead", "Nuqun", "OutlineStyle", serif;
   font-weight: 400;
-  font-size: clamp(1.45rem, 2.5vw, 1.75rem);
-  letter-spacing: 0.01em;
+  font-size: clamp(1.6rem, 2.8vw, 1.95rem);
+  letter-spacing: 0.03em;
 }
 
 .hero__contact {
@@ -2085,6 +2096,17 @@ html[dir="rtl"] .pricing-card__list li {
 
 .terms-trigger--lang {
   background: linear-gradient(125deg, #0ea5e9, #2563eb);
+}
+
+.terms-trigger--lang-square {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
 }
 
 @media (max-width: 720px) {
