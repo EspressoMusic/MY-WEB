@@ -112,6 +112,9 @@
       </div>
     </section>
   </main>
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true">
+    <span class="cursor-dot__label">תלחץ עליי</span>
+  </div>
   <script>
     (function () {
       const html = document.documentElement;
@@ -125,6 +128,25 @@
         btn.textContent = lang === "en" ? "עברית" : "English";
       }
       btn.addEventListener("click", () => applyLang(html.lang === "he" ? "en" : "he"));
+    })();
+    (function () {
+      const cursorDot = document.getElementById("cursorDot");
+      const clickableSelector = "a, button, [role='button'], .btn, summary";
+      if (!cursorDot || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+      document.addEventListener("mousemove", (event) => {
+        cursorDot.style.left = `${event.clientX}px`;
+        cursorDot.style.top = `${event.clientY}px`;
+      });
+      document.addEventListener("mouseover", (event) => {
+        const clickable = event.target.closest(clickableSelector);
+        cursorDot.classList.toggle("is-active", Boolean(clickable));
+      });
+      document.addEventListener("mouseout", (event) => {
+        const leavingClickable = event.target.closest(clickableSelector);
+        if (!leavingClickable) return;
+        const entering = event.relatedTarget && event.relatedTarget.closest(clickableSelector);
+        if (!entering) cursorDot.classList.remove("is-active");
+      });
     })();
   </script>
 </body>

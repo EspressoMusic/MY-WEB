@@ -99,7 +99,7 @@
         policy: "Accessibility & Policy",
         languageBtn: "עברית",
         a11yFabAria: "Open accessibility tools",
-        chatFabAria: "Open chat",
+        chatFabAria: "Open WhatsApp",
         chatCloseAria: "Close chat window",
         botAlt: "Picasow support bot",
         chatTitle: "How can I help you today?",
@@ -193,7 +193,7 @@
         policy: "תקנון ומדיניות",
         languageBtn: "English",
         a11yFabAria: "פתיחת כלי נגישות",
-        chatFabAria: "פתיחת צ'אט",
+        chatFabAria: "פתיחת וואטסאפ",
         chatCloseAria: "סגירת חלונית צ'אט",
         botAlt: "בוט התמיכה של Picasow",
         chatTitle: "איך אוכל לעזור לך היום?",
@@ -583,23 +583,13 @@
     });
   }
 
-  const chatModal = document.getElementById("chatModal");
   const chatTrigger = document.getElementById("chatTrigger");
-  const chatCloseEls = document.querySelectorAll("[data-close-chat]");
-
-  function setChatModalOpen(open) {
-    if (!chatModal) return;
-    chatModal.classList.toggle("is-open", open);
-    chatModal.setAttribute("aria-hidden", String(!open));
-  }
-
-  if (chatTrigger && chatModal) {
-    chatTrigger.addEventListener("click", () => setChatModalOpen(true));
-    chatCloseEls.forEach((el) => {
-      el.addEventListener("click", () => setChatModalOpen(false));
-    });
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") setChatModalOpen(false);
+  if (chatTrigger) {
+    chatTrigger.addEventListener("click", () => {
+      const text = encodeURIComponent(
+        currentLang === "en" ? "Hi, I want to get more details." : "שלום, אני רוצה לקבל פרטים נוספים."
+      );
+      window.open(`https://wa.me/972586122187?text=${text}`, "_blank", "noopener,noreferrer");
     });
   }
 
