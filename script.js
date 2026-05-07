@@ -65,7 +65,7 @@
 
     const content = nextLang === "en"
       ? {
-        pageTitle: "Picasow",
+        pageTitle: "Picasow | Web Design, Development and Business Growth",
         lightLabel: "Light",
         darkLabel: "Dark",
         homeAria: "Home page",
@@ -106,8 +106,8 @@
         gallerySub: "A few of our projects....",
         galleryAAria: "Open DARION project in a new tab",
         galleryBAria: "Open Roomie project in a new tab",
-        galleryAltA: "Gallery image 1",
-        galleryAltB: "Gallery image 2",
+        galleryAltA: "DARION website design project",
+        galleryAltB: "Roomie product showcase website project",
         miniAria: "Price notice",
         footerNote: "Prices do not include hosting, domain, or special add-ons - full details are provided in the call.",
         policy: "Accessibility & Policy",
@@ -115,7 +115,7 @@
         a11yFabAria: "Open accessibility tools",
         chatFabAria: "Open chat",
         chatCloseAria: "Close chat window",
-        botAlt: "Bot",
+        botAlt: "Picasow support bot",
         chatTitle: "How can I help you today?",
         a11yCloseAria: "Close accessibility window",
         a11yTitle: "Website Accessibility",
@@ -141,7 +141,6 @@
         statusSpacingOn: "Text spacing enabled.",
         statusSpacingOff: "Text spacing disabled.",
         statusReset: "All accessibility settings were reset.",
-        startGame: "Start game",
         growthOn: "Hide company benefits around the headline",
         growthOff: "Show company benefits around the headline",
         benefits: [
@@ -160,7 +159,7 @@
         ]
       }
       : {
-        pageTitle: "Picasow",
+        pageTitle: "Picasow | בניית אתרים, עיצוב ופיתוח לעסקים",
         lightLabel: "אור",
         darkLabel: "חושך",
         homeAria: "דף הבית",
@@ -201,8 +200,8 @@
         gallerySub: "קצת מהפרוייקטים שלנו....",
         galleryAAria: "פתיחת פרויקט DARION בחלון חדש",
         galleryBAria: "פתיחת פרויקט Roomie בחלון חדש",
-        galleryAltA: "תמונה מהגלריה 1",
-        galleryAltB: "תמונה מהגלריה 2",
+        galleryAltA: "פרויקט עיצוב אתר DARION",
+        galleryAltB: "פרויקט אתר Roomie לתצוגת מוצר",
         miniAria: "הערת מחיר",
         footerNote: "המחירים אינם כוללים עלויות אחסון, דומיין ותוספות מיוחדות – פירוט מלא יינתן בשיחת הטלפון.",
         policy: "תקנון ומדיניות",
@@ -210,7 +209,7 @@
         a11yFabAria: "פתיחת כלי נגישות",
         chatFabAria: "פתיחת צ'אט",
         chatCloseAria: "סגירת חלונית צ'אט",
-        botAlt: "בוט",
+        botAlt: "בוט התמיכה של Picasow",
         chatTitle: "איך אוכל לעזור לך היום?",
         a11yCloseAria: "סגירת חלון נגישות",
         a11yTitle: "נגישות האתר",
@@ -236,7 +235,6 @@
         statusSpacingOn: "ריווח טקסט הופעל.",
         statusSpacingOff: "ריווח טקסט בוטל.",
         statusReset: "כל הגדרות הנגישות אופסו.",
-        startGame: "התחל משחק",
         growthOn: "הסתרת יתרונות החברה סביב הכותרת",
         growthOff: "הצגת יתרונות החברה סביב הכותרת",
         benefits: [
@@ -395,8 +393,6 @@
     if (a11yResetBtn) a11yResetBtn.textContent = content.a11yReset;
     const cursorLabel = document.querySelector(".cursor-dot__label");
     if (cursorLabel) cursorLabel.textContent = content.cursorLabel;
-    const gameStartBtn = document.getElementById("miniGameStart");
-    if (gameStartBtn) gameStartBtn.textContent = content.startGame;
 
     const benefitsToggle = document.getElementById("heroBenefitsToggle");
     if (benefitsToggle) {
@@ -829,104 +825,6 @@
     el.classList.add("scroll-pop");
     scrollObserver.observe(el);
   });
-
-  const gameArena = document.getElementById("miniGameArena");
-  const gameTarget = document.getElementById("miniGameTarget");
-  const gameScoreEl = document.getElementById("miniGameScore");
-  const gameTimeEl = document.getElementById("miniGameTime");
-  const gameStartBtn = document.getElementById("miniGameStart");
-  const gameStopBtn = document.getElementById("miniGameStop");
-  const gameResult = document.getElementById("miniGameResult");
-  const gameFinalScore = document.getElementById("miniGameFinalScore");
-  const gameReplayBtn = document.getElementById("miniGameReplay");
-  const gameConfetti = document.getElementById("miniGameConfetti");
-  let gameScore = 0;
-  let gameTimeLeft = 20;
-  let gameTimer = null;
-  let moveTimer = null;
-  let gameRunning = false;
-
-  function placeTargetRandom() {
-    if (!gameArena || !gameTarget) return;
-    const arenaRect = gameArena.getBoundingClientRect();
-    const targetRect = gameTarget.getBoundingClientRect();
-    const maxX = Math.max(0, arenaRect.width - targetRect.width - 8);
-    const maxY = Math.max(0, arenaRect.height - targetRect.height - 8);
-    gameTarget.style.left = `${Math.floor(Math.random() * maxX) + targetRect.width / 2 + 4}px`;
-    gameTarget.style.top = `${Math.floor(Math.random() * maxY) + targetRect.height / 2 + 4}px`;
-    gameTarget.style.transform = "translate(-50%, -50%)";
-  }
-
-  function stopGame() {
-    if (gameTimer) clearInterval(gameTimer);
-    if (moveTimer) clearInterval(moveTimer);
-    gameTimer = null;
-    moveTimer = null;
-    gameRunning = false;
-    if (gameStartBtn) gameStartBtn.textContent = "התחל משחק";
-  }
-
-  function burstConfetti() {
-    if (!gameConfetti) return;
-    gameConfetti.innerHTML = "";
-    const colors = ["#f59e0b", "#ef4444", "#10b981", "#3b82f6", "#a855f7", "#f43f5e"];
-    for (let i = 0; i < 46; i += 1) {
-      const piece = document.createElement("i");
-      piece.style.left = `${Math.random() * 100}%`;
-      piece.style.background = colors[Math.floor(Math.random() * colors.length)];
-      piece.style.animationDelay = `${Math.random() * 0.2}s`;
-      gameConfetti.appendChild(piece);
-    }
-    setTimeout(() => {
-      gameConfetti.innerHTML = "";
-    }, 1400);
-  }
-
-  function showGameResult() {
-    if (gameFinalScore) gameFinalScore.textContent = String(gameScore);
-    if (gameResult) gameResult.hidden = false;
-    burstConfetti();
-  }
-
-  function startGame() {
-    stopGame();
-    gameScore = 0;
-    gameTimeLeft = 20;
-    gameRunning = true;
-    if (gameResult) gameResult.hidden = true;
-    if (gameScoreEl) gameScoreEl.textContent = String(gameScore);
-    if (gameTimeEl) gameTimeEl.textContent = String(gameTimeLeft);
-    placeTargetRandom();
-    moveTimer = setInterval(placeTargetRandom, 850);
-    gameTimer = setInterval(() => {
-      gameTimeLeft -= 1;
-      if (gameTimeEl) gameTimeEl.textContent = String(gameTimeLeft);
-      if (gameTimeLeft <= 0) {
-        stopGame();
-        if (gameTimeEl) gameTimeEl.textContent = "0";
-        showGameResult();
-      }
-    }, 1000);
-    if (gameStartBtn) gameStartBtn.textContent = "משחק פעיל";
-  }
-
-  function stopGameByUser() {
-    if (!gameRunning) return;
-    stopGame();
-    showGameResult();
-  }
-
-  if (gameTarget && gameStartBtn) {
-    gameStartBtn.addEventListener("click", startGame);
-    if (gameReplayBtn) gameReplayBtn.addEventListener("click", startGame);
-    if (gameStopBtn) gameStopBtn.addEventListener("click", stopGameByUser);
-    gameTarget.addEventListener("click", () => {
-      if (!gameRunning) return;
-      gameScore += 1;
-      if (gameScoreEl) gameScoreEl.textContent = String(gameScore);
-      placeTargetRandom();
-    });
-  }
 
 })();
 

@@ -3,13 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Picasow</title>
+  <title>Picasow | בניית אתרים, עיצוב ופיתוח לעסקים</title>
+  <meta name="description" content="Picasow מתמחה בבניית אתרים, עיצוב ופיתוח לעסקים שרוצים לגדול. אתרי תדמית, אתרים מקצועיים, חוויית משתמש ותוצאות אמיתיות." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <link rel="canonical" href="https://picasow.website/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://picasow.website/" />
+  <meta property="og:title" content="Picasow | בניית אתרים, עיצוב ופיתוח לעסקים" />
+  <meta property="og:description" content="בניית אתרים מקצועיים לעסקים, עם עיצוב חוויית משתמש, ביצועים גבוהים וליווי אישי עד השקה." />
+  <meta property="og:image" content="https://picasow.website/logo.png" />
+  <meta property="og:site_name" content="Picasow" />
+  <meta property="og:locale" content="he_IL" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Picasow | בניית אתרים, עיצוב ופיתוח לעסקים" />
+  <meta name="twitter:description" content="בניית אתרים מקצועיים לעסקים עם עיצוב, פיתוח וליווי אישי." />
+  <meta name="twitter:image" content="https://picasow.website/logo.png" />
+  <link rel="preload" href="Thesead.otf" as="font" type="font/otf" crossorigin />
+  <link rel="preload" href="logo.webp" as="image" type="image/webp" fetchpriority="high" />
   <link rel="icon" type="image/png" href="logo.png" />
   <link rel="apple-touch-icon" href="logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@500;600;700;800&family=Sanchez&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Picasow",
+    "url": "https://picasow.website/",
+    "logo": "https://picasow.website/logo.png",
+    "description": "בניית אתרים, עיצוב ופיתוח לעסקים עם דגש על חוויית משתמש, ביצועים והמרות.",
+    "areaServed": "IL",
+    "serviceType": ["Web Design", "Web Development", "Business Website Design"],
+    "telephone": "+972501234567",
+    "email": "shilohdhd1@gmail.com"
+  }
+  </script>
 </head>
 <body>
   <button type="button" class="theme-toggle" id="themeToggle" aria-label="מעבר למצב חשוך" aria-pressed="false">
@@ -22,6 +52,7 @@
     </span>
   </button>
 
+  <main id="main-content">
   <section class="hero" id="home" aria-label="דף הבית">
     <div class="hero__vlines hero__vlines--fade" aria-hidden="true"></div>
 
@@ -31,7 +62,10 @@
         <a href="#" data-contact-open>צור קשר</a>
       </nav>
       <a href="#home" class="hero__brand">
-        <img src="logo.png" class="hero__mark-img" alt="" aria-hidden="true" />
+        <picture>
+          <source srcset="logo.webp" type="image/webp" />
+          <img src="logo.png" class="hero__mark-img" alt="לוגו Picasow" width="1024" height="1024" decoding="async" fetchpriority="high" />
+        </picture>
         <span class="hero__brand-text">PICASOW</span>
       </a>
     </header>
@@ -156,16 +190,23 @@
 
     <div class="gallery-showcase reveal">
       <a class="gallery-item gallery-item--a" href="https://espressomusic.github.io/-1/" target="_blank" rel="noopener noreferrer" aria-label="פתיחת פרויקט DARION בחלון חדש">
-        <img src="gallery-room.png" alt="תמונה מהגלריה 1" />
+        <picture>
+          <source srcset="gallery-room.webp" type="image/webp" />
+          <img src="gallery-room.png" alt="פרויקט עיצוב אתר DARION" width="1024" height="483" loading="lazy" decoding="async" />
+        </picture>
       </a>
       <a class="gallery-item gallery-item--b" href="https://espressomusic.github.io/FURTUNE2/" target="_blank" rel="noopener noreferrer" aria-label="פתיחת פרויקט Roomie בחלון חדש">
-        <img src="gallery-roomie.png" alt="תמונה מהגלריה 2" />
+        <picture>
+          <source srcset="gallery-roomie.webp" type="image/webp" />
+          <img src="gallery-roomie.png" alt="פרויקט אתר Roomie לתצוגת מוצר" width="1024" height="496" loading="lazy" decoding="async" />
+        </picture>
       </a>
     </div>
   </section>
 
   <section class="mini-game section" aria-label="הערת מחיר">
     <header class="mini-game__head">
+      <h2 class="sr-only">מידע חשוב על מחירים</h2>
       <p>המחירים אינם כוללים עלויות אחסון, דומיין ותוספות מיוחדות – פירוט מלא יינתן בשיחת הטלפון.</p>
     </header>
     <div class="terms-trigger-wrap">
@@ -178,6 +219,7 @@
       </button>
     </div>
   </section>
+  </main>
 
   <button type="button" class="chat-fab" id="chatTrigger" aria-label="פתיחת צ'אט">
     <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -190,7 +232,10 @@
     <section class="chat-modal__panel" role="dialog" aria-modal="true" aria-labelledby="chatTitle">
       <button type="button" class="chat-modal__close" data-close-chat aria-label="סגירת חלונית צ'אט">×</button>
       <div class="chat-modal__bot">
-        <img src="logo.png" alt="בוט" />
+        <picture>
+          <source srcset="logo.webp" type="image/webp" />
+          <img src="logo.png" alt="בוט התמיכה של Picasow" width="1024" height="1024" loading="lazy" decoding="async" />
+        </picture>
         <h3 id="chatTitle">איך אוכל לעזור לך היום?</h3>
       </div>
     </section>

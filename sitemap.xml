@@ -4,4 +4,20 @@
     <loc>https://picasow.website/</loc>
     <priority>1.0</priority>
   </url>
+  <url>
+    <loc>https://picasow.website/lawyer-website-design/</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://picasow.website/restaurant-website-design/</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://picasow.website/real-estate-website-design/</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://picasow.website/fitness-website-design/</loc>
+    <priority>0.9</priority>
+  </url>
 </urlset>
