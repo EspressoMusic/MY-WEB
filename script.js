@@ -94,6 +94,11 @@
         galleryBAria: "Open Roomie project in a new tab",
         galleryAltA: "DARION website design project",
         galleryAltB: "Roomie product showcase website project",
+        testimonialsTitle: "Happy Clients Recommend Us",
+        testimonialsSub: "5-star reviews from businesses we built for",
+        testimonialRoleA: "Business Client",
+        testimonialRoleB: "Business Owner",
+        testimonialRoleC: "Digital Founder",
         miniAria: "Price notice",
         footerNote: "Prices do not include hosting, domain, or special add-ons - full details are provided in the call.",
         policy: "Accessibility & Policy",
@@ -188,6 +193,11 @@
         galleryBAria: "פתיחת פרויקט Roomie בחלון חדש",
         galleryAltA: "פרויקט עיצוב אתר DARION",
         galleryAltB: "פרויקט אתר Roomie לתצוגת מוצר",
+        testimonialsTitle: "לקוחות מרוצים ממליצים",
+        testimonialsSub: "תגובות 5 כוכבים מעסקים שבנו איתנו אתר",
+        testimonialRoleA: "לקוח עסקי",
+        testimonialRoleB: "בעלת עסק",
+        testimonialRoleC: "יזם דיגיטלי",
         miniAria: "הערת מחיר",
         footerNote: "המחירים אינם כוללים עלויות אחסון, דומיין ותוספות מיוחדות – פירוט מלא יינתן בשיחת הטלפון.",
         policy: "תקנון ומדיניות",
@@ -287,6 +297,14 @@
     const galleryBImg = document.querySelector(".gallery-item--b img");
     if (galleryAImg) galleryAImg.alt = content.galleryAltA;
     if (galleryBImg) galleryBImg.alt = content.galleryAltB;
+    const testimonialsHeading = document.getElementById("testimonials-heading");
+    if (testimonialsHeading) testimonialsHeading.textContent = content.testimonialsTitle;
+    const testimonialsSub = document.querySelector(".section--testimonials .section-header__sub");
+    if (testimonialsSub) testimonialsSub.textContent = content.testimonialsSub;
+    const testimonialRoles = document.querySelectorAll(".testimonial-card__person strong");
+    if (testimonialRoles[0]) testimonialRoles[0].textContent = content.testimonialRoleA;
+    if (testimonialRoles[1]) testimonialRoles[1].textContent = content.testimonialRoleB;
+    if (testimonialRoles[2]) testimonialRoles[2].textContent = content.testimonialRoleC;
     const miniSection = document.querySelector(".mini-game");
     if (miniSection) miniSection.setAttribute("aria-label", content.miniAria);
     const miniText = document.querySelector(".mini-game__head p");
