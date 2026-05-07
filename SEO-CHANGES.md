@@ -64,7 +64,6 @@ Configured with:
   - `logo.webp`
   - `gallery-room.webp`
   - `gallery-roomie.webp`
-  - `ROCKET.webp`
 - Added `<picture>` markup with WebP source + PNG fallback where relevant.
 - Added explicit `width` and `height` attributes to key images to reduce CLS.
 - Added `loading="lazy"` and `decoding="async"` for below-the-fold images.
