@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Picasow — גלריה</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@500;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root { color-scheme: light; }
+    body {
+      margin: 0;
+      font-family: "Heebo", sans-serif;
+      background: #f5f6fb;
+      color: #111827;
+    }
+    .gallery-page {
+      min-height: 100vh;
+      padding: clamp(1.2rem, 4vw, 2.5rem);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .gallery-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+    }
+    .gallery-top h1 {
+      margin: 0;
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+    }
+    .back-btn {
+      text-decoration: none;
+      background: linear-gradient(125deg, #6366f1, #8b5cf6);
+      color: #fff;
+      font-weight: 700;
+      padding: 0.55rem 1rem;
+      border-radius: 999px;
+      box-shadow: 0 10px 22px rgba(99, 102, 241, 0.3);
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .gallery-card {
+      aspect-ratio: 4 / 3;
+      border-radius: 16px;
+      background: linear-gradient(160deg, #ffffff, #ecefff);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12);
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      color: #4b5563;
+    }
+  </style>
+</head>
+<body>
+  <main class="gallery-page">
+    <header class="gallery-top">
+      <h1>גלריה</h1>
+      <a class="back-btn" href="index.html">חזרה לתפריט</a>
+    </header>
+    <section class="gallery-grid" aria-label="גלריית עבודות">
+      <article class="gallery-card">פרויקט 1</article>
+      <article class="gallery-card">פרויקט 2</article>
+      <article class="gallery-card">פרויקט 3</article>
+      <article class="gallery-card">פרויקט 4</article>
+      <article class="gallery-card">פרויקט 5</article>
+      <article class="gallery-card">פרויקט 6</article>
+    </section>
+  </main>
+</body>
+</html>
