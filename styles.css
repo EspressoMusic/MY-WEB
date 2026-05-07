@@ -310,6 +310,50 @@ html[data-a11y-spacing="true"] body {
   letter-spacing: 0.02em;
 }
 
+html[data-a11y-bw="true"] body {
+  filter: grayscale(1);
+}
+
+html[data-a11y-bw="true"] .cursor-dot {
+  background: #000000 !important;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+html[data-a11y-bw="true"] .cursor-dot.is-active {
+  background: rgba(0, 0, 0, 0.92) !important;
+}
+
+html[data-a11y-links="true"] a {
+  text-decoration: underline !important;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  color: #0ea5e9 !important;
+  font-weight: 800;
+}
+
+html[data-a11y-readable="true"] body,
+html[data-a11y-readable="true"] button,
+html[data-a11y-readable="true"] input,
+html[data-a11y-readable="true"] textarea {
+  font-family: "Heebo", Arial, sans-serif !important;
+  letter-spacing: 0 !important;
+}
+
+html[data-a11y-stop-motion="true"] *,
+html[data-a11y-stop-motion="true"] *::before,
+html[data-a11y-stop-motion="true"] *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+
+html[data-a11y-keyboard-nav="true"] :focus-visible {
+  outline: 3px solid #0ea5e9 !important;
+  outline-offset: 3px !important;
+  border-radius: 6px;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -2478,6 +2522,41 @@ html[lang="he"] .hero__brand-text {
 
 .a11y-modal__text {
   margin: 0.4rem 0 0.8rem;
+}
+
+.a11y-modal .legal-page--modal {
+  max-width: 900px;
+  margin: 0 auto 1rem;
+  padding: 0.35rem 0.4rem 0.8rem;
+  direction: rtl;
+  font-family: "Heebo", sans-serif;
+  color: var(--text);
+  line-height: 1.9;
+}
+
+.a11y-modal .legal-page--modal h1 {
+  font-size: clamp(1.5rem, 3.2vw, 2rem);
+  margin: 0.7rem 0 0.85rem;
+}
+
+.a11y-modal .legal-page--modal h2 {
+  font-size: clamp(1.2rem, 2.4vw, 1.5rem);
+  margin: 1.25rem 0 0.45rem;
+}
+
+.a11y-modal .legal-page--modal p,
+.a11y-modal .legal-page--modal li {
+  font-size: clamp(0.98rem, 1.95vw, 1.08rem);
+}
+
+.a11y-modal .legal-page--modal ul {
+  padding-inline-start: 1.2rem;
+}
+
+.a11y-modal .legal-page--modal hr {
+  margin: 1.6rem 0;
+  border: 0;
+  border-top: 1px solid rgba(148, 163, 184, 0.45);
 }
 
 .a11y-modal__details {

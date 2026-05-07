@@ -119,15 +119,29 @@
         a11yFontUp: "Increase text size",
         a11yFontDown: "Decrease text size",
         a11yContrast: "High contrast",
-        a11ySpacing: "Text spacing",
+        a11yBw: "Black & white mode",
+        a11yLinks: "Highlight links",
+        a11yReadableFont: "Readable font",
+        a11yStopMotion: "Stop animations",
+        a11yKeyboardNav: "Keyboard navigation",
+        a11yStatement: "Accessibility statement",
         a11yReset: "Reset",
         cursorLabel: "Click me",
         statusFontUp: "Text size increased.",
         statusFontDown: "Text size decreased.",
         statusContrastOn: "High contrast enabled.",
         statusContrastOff: "High contrast disabled.",
-        statusSpacingOn: "Text spacing enabled.",
-        statusSpacingOff: "Text spacing disabled.",
+        statusBwOn: "Black & white mode enabled.",
+        statusBwOff: "Black & white mode disabled.",
+        statusLinksOn: "Link highlighting enabled.",
+        statusLinksOff: "Link highlighting disabled.",
+        statusReadableFontOn: "Readable font enabled.",
+        statusReadableFontOff: "Readable font disabled.",
+        statusStopMotionOn: "Animations stopped.",
+        statusStopMotionOff: "Animations resumed.",
+        statusKeyboardNavOn: "Keyboard navigation mode enabled.",
+        statusKeyboardNavOff: "Keyboard navigation mode disabled.",
+        statusStatement: "Scrolled to accessibility statement.",
         statusReset: "All accessibility settings were reset.",
         growthOn: "Hide company benefits around the headline",
         growthOff: "Show company benefits around the headline",
@@ -215,15 +229,29 @@
         a11yFontUp: "הגדלת כתב",
         a11yFontDown: "הקטנת כתב",
         a11yContrast: "ניגודיות גבוהה",
-        a11ySpacing: "ריווח טקסט",
+        a11yBw: "מצב שחור־לבן",
+        a11yLinks: "הדגשת קישורים",
+        a11yReadableFont: "פונט קריא",
+        a11yStopMotion: "עצירת אנימציות",
+        a11yKeyboardNav: "ניווט מקלדת",
+        a11yStatement: "הצהרת נגישות",
         a11yReset: "איפוס",
         cursorLabel: "תלחץ עליי",
         statusFontUp: "הכתב הוגדל.",
         statusFontDown: "הכתב הוקטן.",
         statusContrastOn: "ניגודיות גבוהה הופעלה.",
         statusContrastOff: "ניגודיות גבוהה בוטלה.",
-        statusSpacingOn: "ריווח טקסט הופעל.",
-        statusSpacingOff: "ריווח טקסט בוטל.",
+        statusBwOn: "מצב שחור־לבן הופעל.",
+        statusBwOff: "מצב שחור־לבן בוטל.",
+        statusLinksOn: "הדגשת קישורים הופעלה.",
+        statusLinksOff: "הדגשת קישורים בוטלה.",
+        statusReadableFontOn: "פונט קריא הופעל.",
+        statusReadableFontOff: "פונט קריא בוטל.",
+        statusStopMotionOn: "אנימציות נעצרו.",
+        statusStopMotionOff: "אנימציות הופעלו מחדש.",
+        statusKeyboardNavOn: "מצב ניווט מקלדת הופעל.",
+        statusKeyboardNavOff: "מצב ניווט מקלדת בוטל.",
+        statusStatement: "גלילה להצהרת הנגישות בוצעה.",
         statusReset: "כל הגדרות הנגישות אופסו.",
         growthOn: "הסתרת יתרונות החברה סביב הכותרת",
         growthOff: "הצגת יתרונות החברה סביב הכותרת",
@@ -380,12 +408,22 @@
     const a11yFontUpBtn = document.querySelector('[data-a11y-action="font-up"]');
     const a11yFontDownBtn = document.querySelector('[data-a11y-action="font-down"]');
     const a11yContrastBtn = document.querySelector('[data-a11y-action="contrast"]');
-    const a11ySpacingBtn = document.querySelector('[data-a11y-action="spacing"]');
+    const a11yBwBtn = document.querySelector('[data-a11y-action="bw"]');
+    const a11yLinksBtn = document.querySelector('[data-a11y-action="links"]');
+    const a11yReadableFontBtn = document.querySelector('[data-a11y-action="readable-font"]');
+    const a11yStopMotionBtn = document.querySelector('[data-a11y-action="stop-motion"]');
+    const a11yKeyboardNavBtn = document.querySelector('[data-a11y-action="keyboard-nav"]');
+    const a11yStatementBtn = document.querySelector('[data-a11y-action="statement"]');
     const a11yResetBtn = document.querySelector('[data-a11y-action="reset"]');
     if (a11yFontUpBtn) a11yFontUpBtn.textContent = content.a11yFontUp;
     if (a11yFontDownBtn) a11yFontDownBtn.textContent = content.a11yFontDown;
     if (a11yContrastBtn) a11yContrastBtn.textContent = content.a11yContrast;
-    if (a11ySpacingBtn) a11ySpacingBtn.textContent = content.a11ySpacing;
+    if (a11yBwBtn) a11yBwBtn.textContent = content.a11yBw;
+    if (a11yLinksBtn) a11yLinksBtn.textContent = content.a11yLinks;
+    if (a11yReadableFontBtn) a11yReadableFontBtn.textContent = content.a11yReadableFont;
+    if (a11yStopMotionBtn) a11yStopMotionBtn.textContent = content.a11yStopMotion;
+    if (a11yKeyboardNavBtn) a11yKeyboardNavBtn.textContent = content.a11yKeyboardNav;
+    if (a11yStatementBtn) a11yStatementBtn.textContent = content.a11yStatement;
     if (a11yResetBtn) a11yResetBtn.textContent = content.a11yReset;
     const cursorLabel = document.querySelector(".cursor-dot__label");
     if (cursorLabel) cursorLabel.textContent = content.cursorLabel;
@@ -609,11 +647,19 @@
   const a11yCloseEls = document.querySelectorAll("[data-close-a11y]");
   const a11yActions = document.querySelectorAll("[data-a11y-action]");
   const a11yStatus = document.getElementById("a11yStatus");
+  const a11yPanel = document.querySelector(".a11y-modal__panel");
+  const a11yLegalContent = document.getElementById("a11yLegalContent");
 
   function setA11yModalOpen(open) {
     if (!a11yModal) return;
     a11yModal.classList.toggle("is-open", open);
     a11yModal.setAttribute("aria-hidden", String(!open));
+  }
+
+  function focusLegalStatement() {
+    if (!a11yPanel || !a11yLegalContent) return;
+    const targetTop = Math.max(0, a11yLegalContent.offsetTop - 14);
+    a11yPanel.scrollTo({ top: targetTop, behavior: "smooth" });
   }
 
   function cycleFontSize(step) {
@@ -637,13 +683,22 @@
   function resetA11ySettings() {
     doc.removeAttribute("data-a11y-font");
     doc.removeAttribute("data-a11y-contrast");
-    doc.removeAttribute("data-a11y-spacing");
+    doc.removeAttribute("data-a11y-bw");
+    doc.removeAttribute("data-a11y-links");
+    doc.removeAttribute("data-a11y-readable");
+    doc.removeAttribute("data-a11y-stop-motion");
+    doc.removeAttribute("data-a11y-keyboard-nav");
   }
 
   if ((a11yTrigger || a11yInlineTrigger) && a11yModal) {
     resetA11ySettings();
     if (a11yTrigger) a11yTrigger.addEventListener("click", () => setA11yModalOpen(true));
-    if (a11yInlineTrigger) a11yInlineTrigger.addEventListener("click", () => setA11yModalOpen(true));
+    if (a11yInlineTrigger) {
+      a11yInlineTrigger.addEventListener("click", () => {
+        setA11yModalOpen(true);
+        focusLegalStatement();
+      });
+    }
     a11yCloseEls.forEach((el) => {
       el.addEventListener("click", () => setA11yModalOpen(false));
     });
@@ -672,19 +727,79 @@
                 : "ניגודיות גבוהה הופעלה."
           );
         }
-        if (action === "spacing") {
-          const active = doc.getAttribute("data-a11y-spacing") === "true";
-          if (active) doc.removeAttribute("data-a11y-spacing");
-          else doc.setAttribute("data-a11y-spacing", "true");
+        if (action === "bw") {
+          const active = doc.getAttribute("data-a11y-bw") === "true";
+          if (active) doc.removeAttribute("data-a11y-bw");
+          else doc.setAttribute("data-a11y-bw", "true");
           updateA11yStatus(
             currentLang === "en"
               ? active
-                ? "Text spacing disabled."
-                : "Text spacing enabled."
+                ? "Black & white mode disabled."
+                : "Black & white mode enabled."
               : active
-                ? "ריווח טקסט בוטל."
-                : "ריווח טקסט הופעל."
+                ? "מצב שחור־לבן בוטל."
+                : "מצב שחור־לבן הופעל."
           );
+        }
+        if (action === "links") {
+          const active = doc.getAttribute("data-a11y-links") === "true";
+          if (active) doc.removeAttribute("data-a11y-links");
+          else doc.setAttribute("data-a11y-links", "true");
+          updateA11yStatus(
+            currentLang === "en"
+              ? active
+                ? "Link highlighting disabled."
+                : "Link highlighting enabled."
+              : active
+                ? "הדגשת קישורים בוטלה."
+                : "הדגשת קישורים הופעלה."
+          );
+        }
+        if (action === "readable-font") {
+          const active = doc.getAttribute("data-a11y-readable") === "true";
+          if (active) doc.removeAttribute("data-a11y-readable");
+          else doc.setAttribute("data-a11y-readable", "true");
+          updateA11yStatus(
+            currentLang === "en"
+              ? active
+                ? "Readable font disabled."
+                : "Readable font enabled."
+              : active
+                ? "פונט קריא בוטל."
+                : "פונט קריא הופעל."
+          );
+        }
+        if (action === "stop-motion") {
+          const active = doc.getAttribute("data-a11y-stop-motion") === "true";
+          if (active) doc.removeAttribute("data-a11y-stop-motion");
+          else doc.setAttribute("data-a11y-stop-motion", "true");
+          updateA11yStatus(
+            currentLang === "en"
+              ? active
+                ? "Animations resumed."
+                : "Animations stopped."
+              : active
+                ? "אנימציות הופעלו מחדש."
+                : "אנימציות נעצרו."
+          );
+        }
+        if (action === "keyboard-nav") {
+          const active = doc.getAttribute("data-a11y-keyboard-nav") === "true";
+          if (active) doc.removeAttribute("data-a11y-keyboard-nav");
+          else doc.setAttribute("data-a11y-keyboard-nav", "true");
+          updateA11yStatus(
+            currentLang === "en"
+              ? active
+                ? "Keyboard navigation mode disabled."
+                : "Keyboard navigation mode enabled."
+              : active
+                ? "מצב ניווט מקלדת בוטל."
+                : "מצב ניווט מקלדת הופעל."
+          );
+        }
+        if (action === "statement") {
+          focusLegalStatement();
+          updateA11yStatus(currentLang === "en" ? "Scrolled to accessibility statement." : "גלילה להצהרת הנגישות בוצעה.");
         }
         if (action === "reset") {
           resetA11ySettings();
