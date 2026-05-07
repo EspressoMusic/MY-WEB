@@ -2134,18 +2134,11 @@ html[dir="rtl"] .pricing-card__list li {
 }
 
 html[data-lang="en"] body,
-html[data-lang="en"] button,
-html[data-lang="en"] input,
-html[data-lang="en"] textarea {
-  font-family: "SuperWonder", "Heebo", sans-serif;
+html[lang="en"] body,
+html[data-lang="en"] body *,
+html[lang="en"] body * {
+  font-family: "SuperWonder", sans-serif !important;
   letter-spacing: 0.02em;
-}
-
-html[data-lang="en"] .hero-benefits,
-html[data-lang="en"] .hero-benefit,
-html[data-lang="en"] .pricing-card__tagline,
-html[data-lang="en"] .theme-toggle__label {
-  font-family: "SuperWonder", "Heebo", sans-serif;
 }
 
 /* Accessibility */
