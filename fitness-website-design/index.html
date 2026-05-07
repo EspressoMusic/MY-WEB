@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+﻿<!DOCTYPE html>
+<html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Fitness Trainer Website Design | Picasow</title>
-  <meta name="description" content="Fitness website design for personal trainers and coaches. Convert profile visitors into booked sessions with high-performance, mobile-first pages." />
+  <title>בניית אתר למאמני כושר | Picasow</title>
+  <meta name="description" content="בניית אתרים למאמני כושר עם מסר חד, הוכחת תוצאות והנעה ברורה לסגירת אימונים ולידים איכותיים." />
   <link rel="canonical" href="https://picasow.website/fitness-website-design/" />
   <meta name="robots" content="index,follow" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Fitness Trainer Website Design | Picasow" />
-  <meta property="og:description" content="Get a conversion-focused website for trainers and coaches with program pages, social proof, and direct booking calls-to-action." />
+  <meta property="og:title" content="בניית אתר למאמני כושר | Picasow" />
+  <meta property="og:description" content="אתר מאמן שמציג תוצאות, בונה אמון וממיר גולשים לשיחות והצטרפות לתוכנית." />
   <meta property="og:url" content="https://picasow.website/fitness-website-design/" />
   <meta property="og:image" content="https://picasow.website/logo.webp" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -61,64 +61,71 @@
   <main>
     <section class="hero landing-hero">
       <header class="hero__top">
+        <nav class="hero__nav" aria-label="ניווט ראשי">
+          <a href="../index.html">דף הבית</a>
+          <a href="https://wa.me/972586122187?text=שלום%20אני%20צריך%20אתר%20למאמן%20כושר" target="_blank" rel="noopener noreferrer">צור קשר</a>
+        </nav>
         <a href="../index.html" class="hero__brand">
-          <img src="../logo.webp" class="hero__mark-img" alt="Picasow logo" width="1024" height="1024" />
+          <img src="../logo.webp" class="hero__mark-img" alt="לוגו Picasow" width="1024" height="1024" />
           <span class="hero__brand-text">PICASOW</span>
         </a>
       </header>
       <div class="hero__main">
-        <h1 class="hero__headline">Fitness Trainer Website Design That Converts Visitors into Clients</h1>
-        <p class="landing-sub">We design high-impact websites for personal trainers, gyms, and coaches that highlight results, communicate offers, and increase bookings.</p>
+        <h1 class="hero__headline" data-he="בניית אתר למאמני כושר שממיר מתעניינים ללקוחות" data-en="Fitness Trainer Website Design That Converts Visitors">בניית אתר למאמני כושר שממיר מתעניינים ללקוחות</h1>
+        <p class="landing-sub" data-he="אנחנו בונים אתרי מאמנים שמדגישים תוצאות, מציגים תוכניות בצורה חכמה ומעלים את כמות הפניות." data-en="We build trainer websites that showcase results, communicate offers, and increase bookings.">אנחנו בונים אתרי מאמנים שמדגישים תוצאות, מציגים תוכניות בצורה חכמה ומעלים את כמות הפניות.</p>
         <div class="landing-cta">
-          <a class="btn btn--gradient" href="https://wa.me/972586122187?text=Hi%2C%20I%20need%20a%20fitness%20trainer%20website." target="_blank" rel="noopener noreferrer">WhatsApp Consultation</a>
-          <a class="btn btn--black" href="../index.html#development-pricing">Explore Packages</a>
+          <a class="btn btn--gradient" href="https://wa.me/972586122187?text=שלום%20אני%20רוצה%20אתר%20למאמן%20כושר" target="_blank" rel="noopener noreferrer" data-he="לשיחת וואטסאפ" data-en="WhatsApp Consultation">לשיחת וואטסאפ</a>
+          <button type="button" class="btn btn--black" id="langToggleFitness">English</button>
         </div>
       </div>
     </section>
 
     <section class="section section--demand" aria-labelledby="fitness-h2">
       <header class="section-header section-header--center">
-        <h2 id="fitness-h2">Fitness Website SEO + Conversion Strategy</h2>
-        <p class="section-header__sub">Position your training brand with clear authority and action-driven UX.</p>
+        <h2 id="fitness-h2" data-he="מה הופך אתר של מאמן לאתר שמביא לקוחות?" data-en="What makes a trainer website convert?">מה הופך אתר של מאמן לאתר שמביא לקוחות?</h2>
+        <p class="section-header__sub" data-he="מסר חד, הוכחות תוצאה, והנעה ברורה להצטרפות." data-en="Clear positioning, proof of results, and direct action paths.">מסר חד, הוכחות תוצאה, והנעה ברורה להצטרפות.</p>
       </header>
-      <div class="landing-grid">
-        <article class="landing-card">
-          <h3>Program-Focused Landing Pages</h3>
-          <p>Dedicated pages for personal training, online coaching, transformations, and class schedules.</p>
+      <div class="cards cards--demand">
+        <article class="pricing-card reveal is-visible">
+          <div class="pricing-card__badge pricing-card__badge--dark" data-he="עמודי תוכנית" data-en="Program Pages">עמודי תוכנית</div>
+          <div class="pricing-card__list"><p data-he="עמודים ייעודיים לאימונים אישיים, אונליין, ותוכניות ליווי." data-en="Dedicated pages for personal training, online coaching, and guided programs.">עמודים ייעודיים לאימונים אישיים, אונליין, ותוכניות ליווי.</p></div>
         </article>
-        <article class="landing-card">
-          <h3>Trust and Results Content</h3>
-          <p>Structured blocks for success stories, before/after proof, certifications, and coaching methodology.</p>
+        <article class="pricing-card reveal is-visible">
+          <div class="pricing-card__badge pricing-card__badge--purple" data-he="הוכחת תוצאות" data-en="Results Proof">הוכחת תוצאות</div>
+          <div class="pricing-card__list"><p data-he="בלוקים של סיפורי הצלחה, לפני/אחרי והמלצות לקוחות אמיתיות." data-en="Success stories, before/after proof, and real client testimonials.">בלוקים של סיפורי הצלחה, לפני/אחרי והמלצות לקוחות אמיתיות.</p></div>
         </article>
-        <article class="landing-card">
-          <h3>Booking-Centric Flow</h3>
-          <p>Clear CTA hierarchy, mobile-first contact access, and streamlined paths to calls or trial sessions.</p>
+        <article class="pricing-card reveal is-visible">
+          <div class="pricing-card__badge pricing-card__badge--muted" data-he="סגירת פניות" data-en="Booking Funnel">סגירת פניות</div>
+          <div class="pricing-card__list"><p data-he="CTA ברור לשיחה, וואטסאפ או פגישת היכרות — בלי חיכוך." data-en="Clear CTA flow to call, WhatsApp, or trial session without friction.">CTA ברור לשיחה, וואטסאפ או פגישת היכרות — בלי חיכוך.</p></div>
         </article>
       </div>
     </section>
 
     <section class="section section--plans" aria-labelledby="fitness-faq-h2">
       <header class="section-header section-header--center">
-        <h2 id="fitness-faq-h2">Fitness Website Design FAQ</h2>
+        <h2 id="fitness-faq-h2" data-he="שאלות נפוצות" data-en="FAQ">שאלות נפוצות</h2>
       </header>
       <div class="faq-list">
-        <details class="faq-item">
-          <summary>Can the website help me sell coaching packages?</summary>
-          <p>Yes. We design service pages with clear pricing logic and strong conversion messaging to drive package inquiries.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Can I promote both in-person and online training?</summary>
-          <p>Absolutely. We create segmented pages for each training format to improve clarity and lead quality.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Will this support social media traffic?</summary>
-          <p>Yes. The page structure is ideal for users arriving from Instagram, TikTok, and paid campaigns.</p>
-        </details>
-      </div>
-      <div class="landing-cta">
-        <a class="btn btn--gradient" href="https://wa.me/972586122187?text=I%20want%20a%20fitness%20website%20designed%20for%20bookings." target="_blank" rel="noopener noreferrer">Build My Fitness Website</a>
+        <details class="faq-item"><summary data-he="אפשר למכור חבילות אימון דרך האתר?" data-en="Can I sell coaching packages through the site?">אפשר למכור חבילות אימון דרך האתר?</summary><p data-he="כן, עם מבנה תוכן שמדגיש ערך ומכוון לרכישה/פנייה." data-en="Yes, with conversion-focused structure that highlights package value.">כן, עם מבנה תוכן שמדגיש ערך ומכוון לרכישה/פנייה.</p></details>
+        <details class="faq-item"><summary data-he="אפשר לשלב גם אונליין וגם פרונטלי?" data-en="Can online and in-person training be combined?">אפשר לשלב גם אונליין וגם פרונטלי?</summary><p data-he="בוודאי, עם עמודים נפרדים לכל מסלול." data-en="Absolutely, with separate paths for each training format.">בוודאי, עם עמודים נפרדים לכל מסלול.</p></details>
+        <details class="faq-item"><summary data-he="זה מתאים לתנועה מאינסטגרם וטיקטוק?" data-en="Is this suitable for Instagram and TikTok traffic?">זה מתאים לתנועה מאינסטגרם וטיקטוק?</summary><p data-he="כן, הדף בנוי להמרה מהירה גם מתנועה קרה." data-en="Yes, the page is optimized for fast conversion from social traffic.">כן, הדף בנוי להמרה מהירה גם מתנועה קרה.</p></details>
       </div>
     </section>
   </main>
+  <script>
+    (function () {
+      const html = document.documentElement;
+      const btn = document.getElementById("langToggleFitness");
+      function applyLang(lang) {
+        html.lang = lang;
+        html.dir = lang === "en" ? "ltr" : "rtl";
+        document.querySelectorAll("[data-he][data-en]").forEach((el) => {
+          el.textContent = lang === "en" ? el.getAttribute("data-en") : el.getAttribute("data-he");
+        });
+        btn.textContent = lang === "en" ? "עברית" : "English";
+      }
+      btn.addEventListener("click", () => applyLang(html.lang === "he" ? "en" : "he"));
+    })();
+  </script>
 </body>
 </html>

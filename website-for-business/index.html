@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>בניית אתר לעסקים | Picasow</title>
+  <meta name="description" content="בניית אתר לעסקים שרוצים לגדול: נראות מקצועית, חוויית משתמש מעולה, ויותר פניות איכותיות מהאתר." />
+  <link rel="canonical" href="https://picasow.website/website-for-business/" />
+  <meta name="robots" content="index,follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="בניית אתר לעסקים | Picasow" />
+  <meta property="og:description" content="אתר עסקי חכם שמחזק מותג, מציג שירותים ומייצר יותר לקוחות." />
+  <meta property="og:url" content="https://picasow.website/website-for-business/" />
+  <meta property="og:image" content="https://picasow.website/logo.webp" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body class="landing-main">
+  <main>
+    <section class="hero landing-hero">
+      <header class="hero__top">
+        <nav class="hero__nav" aria-label="ניווט ראשי">
+          <a href="../index.html">דף הבית</a>
+          <a href="https://wa.me/972586122187?text=שלום%20אני%20צריך%20אתר%20לעסק" target="_blank" rel="noopener noreferrer">צור קשר</a>
+        </nav>
+        <a href="../index.html" class="hero__brand">
+          <img src="../logo.webp" class="hero__mark-img" alt="לוגו Picasow" width="1024" height="1024" />
+          <span class="hero__brand-text">PICASOW</span>
+        </a>
+      </header>
+      <div class="hero__main">
+        <h1 class="hero__headline" data-he="בניית אתר לעסקים שרוצים לגדול" data-en="Business Website Design for Growth">בניית אתר לעסקים שרוצים לגדול</h1>
+        <p class="landing-sub" data-he="אנחנו בונים אתרים עסקיים שמחברים בין עיצוב, ביצועים ושיווק — כדי להביא יותר לקוחות." data-en="We build business websites that combine design, speed, and marketing to generate more clients.">אנחנו בונים אתרים עסקיים שמחברים בין עיצוב, ביצועים ושיווק — כדי להביא יותר לקוחות.</p>
+        <div class="landing-cta">
+          <a class="btn btn--gradient" href="https://wa.me/972586122187?text=שלום%20אני%20רוצה%20אתר%20לעסק" target="_blank" rel="noopener noreferrer" data-he="לשיחת וואטסאפ" data-en="WhatsApp Consultation">לשיחת וואטסאפ</a>
+          <button type="button" class="btn btn--black" id="langToggleBusiness">English</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--demand" aria-labelledby="business-h2">
+      <header class="section-header section-header--center">
+        <h2 id="business-h2" data-he="מה עסק צריך מאתר מודרני?" data-en="What does a modern business website need?">מה עסק צריך מאתר מודרני?</h2>
+        <p class="section-header__sub" data-he="בסיס דיגיטלי יציב שמייצר נוכחות, אמון ותוצאות." data-en="A digital foundation that builds authority and results.">בסיס דיגיטלי יציב שמייצר נוכחות, אמון ותוצאות.</p>
+      </header>
+      <div class="cards cards--demand">
+        <article class="pricing-card reveal is-visible">
+          <div class="pricing-card__badge pricing-card__badge--dark" data-he="נראות מקצועית" data-en="Professional Presence">נראות מקצועית</div>
+          <div class="pricing-card__list"><p data-he="מיתוג ברור ושפה ויזואלית שמייצרת רושם חזק מהשנייה הראשונה." data-en="Clear branding and visual language that creates immediate trust.">מיתוג ברור ושפה ויזואלית שמייצרת רושם חזק מהשנייה הראשונה.</p></div>
+        </article>
+        <article class="pricing-card reveal is-visible">
+          <div class="pricing-card__badge pricing-card__badge--purple" data-he="חוויית משתמש" data-en="User Experience">חוויית משתמש</div>
+          <div class="pricing-card__list"><p data-he="מבנה פשוט ונוח שמוביל את הלקוח לפעולה הרצויה." data-en="Simple flow that guides visitors toward the right action.">מבנה פשוט ונוח שמוביל את הלקוח לפעולה הרצויה.</p></div>
+        </article>
+        <article class="pricing-card reveal is-visible">
+          <div class="pricing-card__badge pricing-card__badge--muted" data-he="SEO ותוצאות" data-en="SEO & Results">SEO ותוצאות</div>
+          <div class="pricing-card__list"><p data-he="תשתית קידום אורגני + CTA חכם שמגדילים את כמות הלידים." data-en="SEO-ready structure and conversion CTA for sustainable lead growth.">תשתית קידום אורגני + CTA חכם שמגדילים את כמות הלידים.</p></div>
+        </article>
+      </div>
+    </section>
+  </main>
+  <script>
+    (function () {
+      const html = document.documentElement;
+      const btn = document.getElementById("langToggleBusiness");
+      function applyLang(lang) {
+        html.lang = lang;
+        html.dir = lang === "en" ? "ltr" : "rtl";
+        document.querySelectorAll("[data-he][data-en]").forEach((el) => {
+          el.textContent = lang === "en" ? el.getAttribute("data-en") : el.getAttribute("data-he");
+        });
+        btn.textContent = lang === "en" ? "עברית" : "English";
+      }
+      btn.addEventListener("click", () => applyLang(html.lang === "he" ? "en" : "he"));
+    })();
+  </script>
+</body>
+</html>

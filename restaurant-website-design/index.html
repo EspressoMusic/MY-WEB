@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+﻿<!DOCTYPE html>
+<html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Restaurant Website Design | Picasow</title>
-  <meta name="description" content="Restaurant website design for bookings, menus, and local discovery. Built for mobile users and high-conversion table reservations." />
+  <title>בניית אתר למסעדות | Picasow</title>
+  <meta name="description" content="בניית אתרים למסעדות עם דגש על הזמנות, תפריט ברור ונראות חזקה בגוגל. אתר מהיר שממיר גולשים לסועדים." />
   <link rel="canonical" href="https://picasow.website/restaurant-website-design/" />
   <meta name="robots" content="index,follow" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Restaurant Website Design | Picasow" />
-  <meta property="og:description" content="Get a modern restaurant website with menu UX, booking funnels, and local SEO optimization." />
+  <meta property="og:title" content="בניית אתר למסעדות | Picasow" />
+  <meta property="og:description" content="אתר מסעדה שמייצר הזמנות, מציג תפריט בצורה חכמה ומשפר חשיפה מקומית." />
   <meta property="og:url" content="https://picasow.website/restaurant-website-design/" />
   <meta property="og:image" content="https://picasow.website/logo.webp" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -61,64 +61,71 @@
   <main>
     <section class="hero landing-hero">
       <header class="hero__top">
+        <nav class="hero__nav" aria-label="ניווט ראשי">
+          <a href="../index.html">דף הבית</a>
+          <a href="https://wa.me/972586122187?text=שלום%20אני%20צריך%20אתר%20למסעדה" target="_blank" rel="noopener noreferrer">צור קשר</a>
+        </nav>
         <a href="../index.html" class="hero__brand">
-          <img src="../logo.webp" class="hero__mark-img" alt="Picasow logo" width="1024" height="1024" />
+          <img src="../logo.webp" class="hero__mark-img" alt="לוגו Picasow" width="1024" height="1024" />
           <span class="hero__brand-text">PICASOW</span>
         </a>
       </header>
       <div class="hero__main">
-        <h1 class="hero__headline">Restaurant Website Design for More Reservations</h1>
-        <p class="landing-sub">We build restaurant websites that make menus easy to browse, increase table bookings, and improve local search visibility for nearby diners.</p>
+        <h1 class="hero__headline" data-he="בניית אתר למסעדות שמביא יותר הזמנות" data-en="Restaurant Website Design for More Reservations">בניית אתר למסעדות שמביא יותר הזמנות</h1>
+        <p class="landing-sub" data-he="אנחנו בונים אתרי מסעדות שמציגים את התפריט נכון, מחזקים את המותג ומניעים להזמנה בלחיצה אחת." data-en="We build restaurant websites that showcase your menu clearly and turn traffic into bookings.">אנחנו בונים אתרי מסעדות שמציגים את התפריט נכון, מחזקים את המותג ומניעים להזמנה בלחיצה אחת.</p>
         <div class="landing-cta">
-          <a class="btn btn--gradient" href="https://wa.me/972586122187?text=Hi%2C%20I%20need%20a%20restaurant%20website%20design." target="_blank" rel="noopener noreferrer">WhatsApp Consultation</a>
-          <a class="btn btn--black" href="../index.html#development-pricing">See Packages</a>
+          <a class="btn btn--gradient" href="https://wa.me/972586122187?text=שלום%20אני%20רוצה%20אתר%20למסעדה" target="_blank" rel="noopener noreferrer" data-he="לשיחת וואטסאפ" data-en="WhatsApp Consultation">לשיחת וואטסאפ</a>
+          <button type="button" class="btn btn--black" id="langToggleRestaurant">English</button>
         </div>
       </div>
     </section>
 
     <section class="section section--demand" aria-labelledby="restaurant-h2">
       <header class="section-header section-header--center">
-        <h2 id="restaurant-h2">Restaurant SEO and Conversion Essentials</h2>
-        <p class="section-header__sub">Turn website visits into bookings and repeat customers.</p>
+        <h2 id="restaurant-h2" data-he="מה הופך אתר מסעדה לאתר ממיר?" data-en="What makes a restaurant website convert?">מה הופך אתר מסעדה לאתר ממיר?</h2>
+        <p class="section-header__sub" data-he="מבנה שמניע גולש להזמין, להתקשר או לנווט למסעדה בזמן קצר." data-en="A structure that pushes visitors to reserve, call, or navigate quickly.">מבנה שמניע גולש להזמין, להתקשר או לנווט למסעדה בזמן קצר.</p>
       </header>
-      <div class="landing-grid">
-        <article class="landing-card">
-          <h3>Menu-First Information Architecture</h3>
-          <p>Clean sections for food, drinks, dietary tags, and specials with fast scroll behavior on mobile.</p>
+      <div class="cards cards--demand">
+        <article class="pricing-card reveal is-visible">
+          <div class="pricing-card__badge pricing-card__badge--dark" data-he="תפריט ברור" data-en="Clear Menu UX">תפריט ברור</div>
+          <div class="pricing-card__list"><p data-he="קטגוריות ברורות, מבצעים ומנות מובילות כדי להקל על הבחירה ולהגדיל הזמנות." data-en="Clear categories, specials, and featured dishes to simplify choices and increase orders.">קטגוריות ברורות, מבצעים ומנות מובילות כדי להקל על הבחירה ולהגדיל הזמנות.</p></div>
         </article>
-        <article class="landing-card">
-          <h3>Booking-Centered Calls to Action</h3>
-          <p>Prominent reserve buttons, direct WhatsApp contact, and quick access to hours and location.</p>
+        <article class="pricing-card reveal is-visible">
+          <div class="pricing-card__badge pricing-card__badge--purple" data-he="הזמנה מהירה" data-en="Fast Booking Flow">הזמנה מהירה</div>
+          <div class="pricing-card__list"><p data-he="כפתורי הזמנה/שיחה/וואטסאפ בולטים שממירים תנועה לפעולה מיידית." data-en="Prominent reserve/call/WhatsApp actions that convert traffic instantly.">כפתורי הזמנה/שיחה/וואטסאפ בולטים שממירים תנועה לפעולה מיידית.</p></div>
         </article>
-        <article class="landing-card">
-          <h3>Local Search Optimization</h3>
-          <p>Page structure and content aligned with local intent to help users discover your restaurant faster.</p>
+        <article class="pricing-card reveal is-visible">
+          <div class="pricing-card__badge pricing-card__badge--muted" data-he="חשיפה מקומית" data-en="Local Visibility">חשיפה מקומית</div>
+          <div class="pricing-card__list"><p data-he="תוכן מותאם חיפוש מקומי שמביא יותר לקוחות מהאזור שלך." data-en="Local-intent content built to attract nearby diners searching in your area.">תוכן מותאם חיפוש מקומי שמביא יותר לקוחות מהאזור שלך.</p></div>
         </article>
       </div>
     </section>
 
     <section class="section section--plans" aria-labelledby="restaurant-faq-h2">
       <header class="section-header section-header--center">
-        <h2 id="restaurant-faq-h2">Restaurant Website FAQ</h2>
+        <h2 id="restaurant-faq-h2" data-he="שאלות נפוצות" data-en="FAQ">שאלות נפוצות</h2>
       </header>
       <div class="faq-list">
-        <details class="faq-item">
-          <summary>Can I showcase multiple menu categories?</summary>
-          <p>Yes. We structure menus into intuitive categories so users can find items quickly and place orders or bookings faster.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Can you add gallery sections for food and venue photos?</summary>
-          <p>Definitely. We design gallery layouts that support high-quality visuals while keeping performance optimized.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Is this suitable for cafes and bars too?</summary>
-          <p>Yes. The architecture can be adapted for cafes, bars, bistros, and full-service restaurants.</p>
-        </details>
-      </div>
-      <div class="landing-cta">
-        <a class="btn btn--gradient" href="https://wa.me/972586122187?text=I%20want%20a%20restaurant%20website%20that%20brings%20more%20bookings." target="_blank" rel="noopener noreferrer">Build My Restaurant Website</a>
+        <details class="faq-item"><summary data-he="אפשר להציג כמה תפריטים?" data-en="Can I display multiple menus?">אפשר להציג כמה תפריטים?</summary><p data-he="כן. אפשר תפריט צהריים, ערב, בר וקינוחים עם ניווט פשוט." data-en="Yes. Lunch, dinner, bar, and dessert menus can be structured clearly.">כן. אפשר תפריט צהריים, ערב, בר וקינוחים עם ניווט פשוט.</p></details>
+        <details class="faq-item"><summary data-he="האם האתר יתאים גם לבתי קפה וברים?" data-en="Is this suitable for cafes and bars too?">האם האתר יתאים גם לבתי קפה וברים?</summary><p data-he="בהחלט. המבנה גמיש ומתאים לכל עסק קולינרי." data-en="Absolutely. The structure is flexible for all food and beverage brands.">בהחלט. המבנה גמיש ומתאים לכל עסק קולינרי.</p></details>
+        <details class="faq-item"><summary data-he="אפשר לשלב הזמנה דרך וואטסאפ?" data-en="Can WhatsApp booking be integrated?">אפשר לשלב הזמנה דרך וואטסאפ?</summary><p data-he="כן, בלחיצה אחת מהאתר." data-en="Yes, with one-click access directly from the page.">כן, בלחיצה אחת מהאתר.</p></details>
       </div>
     </section>
   </main>
+  <script>
+    (function () {
+      const html = document.documentElement;
+      const btn = document.getElementById("langToggleRestaurant");
+      function applyLang(lang) {
+        html.lang = lang;
+        html.dir = lang === "en" ? "ltr" : "rtl";
+        document.querySelectorAll("[data-he][data-en]").forEach((el) => {
+          el.textContent = lang === "en" ? el.getAttribute("data-en") : el.getAttribute("data-he");
+        });
+        btn.textContent = lang === "en" ? "עברית" : "English";
+      }
+      btn.addEventListener("click", () => applyLang(html.lang === "he" ? "en" : "he"));
+    })();
+  </script>
 </body>
 </html>

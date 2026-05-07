@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>בניית דפי נחיתה | Picasow</title>
+  <meta name="description" content="בניית דפי נחיתה ממירים לקמפיינים, השקות ושירותים — עם מסר חד, עיצוב פרימיום והנעה לפעולה." />
+  <link rel="canonical" href="https://picasow.website/landing-page-design/" />
+  <meta name="robots" content="index,follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="בניית דפי נחיתה | Picasow" />
+  <meta property="og:description" content="דפי נחיתה מהירים ומדויקים שמעלים יחס המרה ומפחיתים עלות לליד." />
+  <meta property="og:url" content="https://picasow.website/landing-page-design/" />
+  <meta property="og:image" content="https://picasow.website/logo.webp" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body class="landing-main">
+  <main>
+    <section class="hero landing-hero">
+      <header class="hero__top">
+        <nav class="hero__nav" aria-label="ניווט ראשי">
+          <a href="../index.html">דף הבית</a>
+          <a href="https://wa.me/972586122187?text=שלום%20אני%20צריך%20דף%20נחיתה" target="_blank" rel="noopener noreferrer">צור קשר</a>
+        </nav>
+        <a href="../index.html" class="hero__brand">
+          <img src="../logo.webp" class="hero__mark-img" alt="לוגו Picasow" width="1024" height="1024" />
+          <span class="hero__brand-text">PICASOW</span>
+        </a>
+      </header>
+      <div class="hero__main">
+        <h1 class="hero__headline" data-he="בניית דפי נחיתה שמעלים יחס המרה" data-en="Landing Page Design That Improves Conversion">בניית דפי נחיתה שמעלים יחס המרה</h1>
+        <p class="landing-sub" data-he="דפי נחיתה לקמפיינים עם מסר חד, מבנה משכנע וחוויית משתמש שמביאה יותר לידים." data-en="Campaign landing pages with sharp messaging and conversion-focused UX.">דפי נחיתה לקמפיינים עם מסר חד, מבנה משכנע וחוויית משתמש שמביאה יותר לידים.</p>
+        <div class="landing-cta">
+          <a class="btn btn--gradient" href="https://wa.me/972586122187?text=שלום%20אני%20רוצה%20דף%20נחיתה%20ממיר" target="_blank" rel="noopener noreferrer" data-he="לשיחת וואטסאפ" data-en="WhatsApp Consultation">לשיחת וואטסאפ</a>
+          <button type="button" class="btn btn--black" id="langToggleLP">English</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--demand" aria-labelledby="lp-h2">
+      <header class="section-header section-header--center">
+        <h2 id="lp-h2" data-he="איך דף נחיתה טוב בנוי?" data-en="How is a high-converting landing page built?">איך דף נחיתה טוב בנוי?</h2>
+        <p class="section-header__sub" data-he="שלושה מרכיבים שמביאים תוצאות אמיתיות בקמפיינים." data-en="Three pillars that improve campaign performance.">שלושה מרכיבים שמביאים תוצאות אמיתיות בקמפיינים.</p>
+      </header>
+      <div class="cards cards--demand">
+        <article class="pricing-card reveal is-visible">
+          <div class="pricing-card__badge pricing-card__badge--dark" data-he="מסר חד" data-en="Sharp Message">מסר חד</div>
+          <div class="pricing-card__list"><p data-he="כותרת, תועלות והוכחות שמדברות ישירות לקהל היעד שלך." data-en="Headline, benefits, and proof that speak directly to your audience.">כותרת, תועלות והוכחות שמדברות ישירות לקהל היעד שלך.</p></div>
+        </article>
+        <article class="pricing-card reveal is-visible">
+          <div class="pricing-card__badge pricing-card__badge--purple" data-he="הנעה לפעולה" data-en="Action-Driven Flow">הנעה לפעולה</div>
+          <div class="pricing-card__list"><p data-he="מסלול ברור מהכניסה לעמוד ועד להשארת פרטים." data-en="A clear path from first view to lead submission.">מסלול ברור מהכניסה לעמוד ועד להשארת פרטים.</p></div>
+        </article>
+        <article class="pricing-card reveal is-visible">
+          <div class="pricing-card__badge pricing-card__badge--muted" data-he="מהירות וביצועים" data-en="Speed & Performance">מהירות וביצועים</div>
+          <div class="pricing-card__list"><p data-he="טעינה מהירה במובייל כדי לא לאבד לידים בדרך." data-en="Fast mobile load so your paid traffic converts efficiently.">טעינה מהירה במובייל כדי לא לאבד לידים בדרך.</p></div>
+        </article>
+      </div>
+    </section>
+  </main>
+  <script>
+    (function () {
+      const html = document.documentElement;
+      const btn = document.getElementById("langToggleLP");
+      function applyLang(lang) {
+        html.lang = lang;
+        html.dir = lang === "en" ? "ltr" : "rtl";
+        document.querySelectorAll("[data-he][data-en]").forEach((el) => {
+          el.textContent = lang === "en" ? el.getAttribute("data-en") : el.getAttribute("data-he");
+        });
+        btn.textContent = lang === "en" ? "עברית" : "English";
+      }
+      btn.addEventListener("click", () => applyLang(html.lang === "he" ? "en" : "he"));
+    })();
+  </script>
+</body>
+</html>
