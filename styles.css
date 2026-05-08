@@ -1113,6 +1113,124 @@ html[data-a11y-keyboard-nav="true"] :focus-visible {
   margin-bottom: 0;
 }
 
+.pricing-card__accordion {
+  margin-top: 1.65rem;
+  border: 1px solid rgba(99, 102, 241, 0.45);
+  border-radius: 999px;
+  background: rgba(99, 102, 241, 0.14);
+  padding: 0.08rem 0.45rem 0.08rem;
+  max-width: 52%;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  transition: box-shadow 0.28s ease, border-color 0.28s ease, filter 0.28s ease;
+  animation: accordion-shine 2.8s ease-in-out infinite;
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.2);
+}
+
+.pricing-card__accordion:hover {
+  border-color: rgba(59, 130, 246, 0.72);
+  box-shadow: 0 12px 24px rgba(37, 99, 235, 0.26);
+  filter: none;
+}
+
+.pricing-card__accordion-trigger {
+  width: 100%;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  box-shadow: none;
+  cursor: pointer;
+  text-align: center;
+  padding: 0.34rem 0.12rem 0.18rem;
+  font-size: clamp(1.02rem, 1.9vw, 1.15rem);
+  color: #1f2937;
+  text-shadow: none;
+  font-family: "Heebo", sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  transition: background 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
+}
+
+.pricing-card__accordion-trigger:hover {
+  background: transparent;
+  box-shadow: none;
+}
+
+.pricing-card--basic .pricing-card__accordion-trigger {
+  border: 0;
+  background: transparent;
+  color: #ffffff;
+  box-shadow: none;
+}
+
+.pricing-card--basic .pricing-card__accordion-trigger:hover {
+  background: transparent;
+  box-shadow: none;
+}
+
+.pricing-card--basic .pricing-card__accordion {
+  border-color: rgba(75, 85, 99, 0.82);
+  background: linear-gradient(180deg, #4b5563, #374151);
+}
+
+.pricing-card--basic .pricing-card__accordion:hover {
+  border-color: rgba(75, 85, 99, 0.95);
+  box-shadow: 0 12px 26px rgba(55, 65, 81, 0.34);
+}
+
+.pricing-card__accordion-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: grid-template-rows 0.36s ease, opacity 0.36s ease, transform 0.36s ease;
+  max-height: 0;
+  pointer-events: none;
+}
+
+.pricing-card__accordion.is-open .pricing-card__accordion-content {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transform: translateY(0);
+  max-height: 260px;
+  pointer-events: auto;
+}
+
+.pricing-card__accordion.is-open {
+  border-radius: 18px;
+  background: rgba(99, 102, 241, 0.12);
+  max-width: 88%;
+  padding: 0.18rem 0.72rem 0.38rem;
+}
+
+.pricing-card__accordion.is-open .pricing-card__accordion-trigger {
+  color: #111111;
+}
+
+.pricing-card__accordion-content p {
+  overflow: hidden;
+  margin: 0.32rem 0 0;
+  font-size: clamp(1.03rem, 1.9vw, 1.16rem);
+  line-height: 1.6;
+  color: var(--text);
+  text-shadow: none;
+  font-family: "Heebo", sans-serif;
+  font-weight: 700;
+}
+
+@keyframes accordion-shine {
+  0% {
+    box-shadow: 0 8px 18px rgba(37, 99, 235, 0.2);
+  }
+  50% {
+    box-shadow: 0 10px 24px rgba(99, 102, 241, 0.32);
+  }
+  100% {
+    box-shadow: 0 8px 18px rgba(37, 99, 235, 0.2);
+  }
+}
+
 .pricing-card__list li {
   display: flex;
   align-items: flex-start;

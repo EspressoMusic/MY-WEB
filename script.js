@@ -74,16 +74,36 @@
         servicesTitle: "Services",
         servicesSub: "Choose the website package that fits you",
         basic: "Starter",
-        basicPrice: "2,500-4,000 ILS",
+        basicPrice: "Business website for 2,500 ILS",
         pro: "Professional",
-        proPrice: "4,500-8,000 ILS",
+        proPrice: "Professional website + catalog for 5,900 ILS",
         premium: "Premium",
         premiumPrice: "8,000-15,000+ ILS",
         soon: "COMING SOON",
-        basicDesc1: "<strong>What is a business website?</strong><br />A website that presents your business professionally and helps attract new clients.",
-        basicDesc2: "<strong>Who is it for?</strong><br />Business owners and service providers who want a strong online presence.",
-        proDesc1: "<strong>What is a professional website?</strong><br />A higher-level site built to generate results, not only look good.",
-        proDesc2: "<strong>Who is it for?</strong><br />Businesses that want more leads, more clients, and more sales.",
+        basicDesc1: `
+          <p>Includes first year of hosting and domain as a <strong>free gift</strong>.</p>
+          <p>From the second year: only 790 ILS per year.</p>
+          <div class="pricing-card__accordion">
+            <button type="button" class="pricing-card__accordion-trigger" aria-expanded="false"><strong>What is it and who is it for?</strong></button>
+            <div class="pricing-card__accordion-content" aria-hidden="true">
+              <p>A clean, clear website that presents your business, services, and contact details professionally.</p>
+              <p>Perfect for small businesses and independent professionals who want trusted online presence and more client inquiries.</p>
+            </div>
+          </div>
+        `,
+        basicDesc2: "",
+        proDesc1: `
+          <p>Includes first year of hosting and domain as a <strong>free gift</strong>.</p>
+          <p>From the second year: only 990 ILS per year.</p>
+          <div class="pricing-card__accordion">
+            <button type="button" class="pricing-card__accordion-trigger" aria-expanded="false"><strong>What is it and who is it for?</strong></button>
+            <div class="pricing-card__accordion-content" aria-hidden="true">
+              <p>A higher-level website built not only to present your business, but also to generate results: more leads, more clients, and more sales.</p>
+              <p>Ideal for businesses that want to stand out, grow, and turn their website into a real marketing and sales channel.</p>
+            </div>
+          </div>
+        `,
+        proDesc2: "",
         premiumDesc1: "<strong>What is a premium website?</strong><br />An advanced site with full ecommerce capabilities and automation.",
         premiumDesc2: "<strong>Who is it for?</strong><br />Businesses that want to sell online and scale 24/7.",
         want: "I want this!",
@@ -234,16 +254,36 @@
         servicesTitle: "שירותים",
         servicesSub: "בחרו את האתר שמתאים לכם",
         basic: "מתחילים",
-        basicPrice: "2,500–4,000 ש\"ח",
+        basicPrice: "אתר תדמית ב־2,500 ₪",
         pro: "מקצועי",
-        proPrice: "4,500–8,000 ש\"ח",
+        proPrice: "אתר מקצועי + קטלוג ב־5,900 ₪",
         premium: "פרימיום",
         premiumPrice: "8,000–15,000+ ש\"ח",
         soon: "בקרוב",
-        basicDesc1: "<strong>מה זה אתר תדמית?</strong><br />אתר שמציג את העסק שלך בצורה מקצועית ומטרתו להביא לקוחות חדשים ולבנות אמון.",
-        basicDesc2: "<strong>למי זה מתאים?</strong><br />לעסקים, נותני שירות ובעלי מקצוע שרוצים נוכחות מקצועית ברשת ולהגדיל פניות.",
-        proDesc1: "<strong>מה זה אתר מקצועי?</strong><br />אתר ברמה גבוהה שמיועד לא רק להציג את העסק, אלא גם לייצר תוצאות — יותר פניות, יותר לקוחות ויותר מכירות.",
-        proDesc2: "<strong>למי זה מתאים?</strong><br />לעסקים שרוצים לבלוט, לגדול ולהפוך את האתר לכלי שיווק ומכירה אמיתי.",
+        basicDesc1: `
+          <p>כולל שנה ראשונה של אחסון ודומיין <strong>במתנה</strong>.</p>
+          <p>מהשנה השנייה: 790 ₪ לשנה בלבד.</p>
+          <div class="pricing-card__accordion">
+            <button type="button" class="pricing-card__accordion-trigger" aria-expanded="false"><strong>מה זה ולמי זה מתאים?</strong></button>
+            <div class="pricing-card__accordion-content" aria-hidden="true">
+              <p>אתר נקי וברור שמציג את העסק, השירותים ופרטי יצירת הקשר בצורה מקצועית.</p>
+              <p>מתאים לעסקים קטנים ובעלי מקצוע שרוצים נוכחות אמינה באינטרנט ויותר פניות מלקוחות.</p>
+            </div>
+          </div>
+        `,
+        basicDesc2: "",
+        proDesc1: `
+          <p>כולל שנה ראשונה של אחסון ודומיין <strong>במתנה</strong>.</p>
+          <p>מהשנה השנייה: 990 ₪ לשנה בלבד.</p>
+          <div class="pricing-card__accordion">
+            <button type="button" class="pricing-card__accordion-trigger" aria-expanded="false"><strong>מה זה ולמי זה מתאים?</strong></button>
+            <div class="pricing-card__accordion-content" aria-hidden="true">
+              <p>אתר ברמה גבוהה שמיועד לא רק להציג את העסק, אלא גם לייצר תוצאות — יותר פניות, יותר לקוחות ויותר מכירות.</p>
+              <p>מתאים לעסקים שרוצים לבלוט, לגדול ולהפוך את האתר לכלי שיווק ומכירה אמיתי.</p>
+            </div>
+          </div>
+        `,
+        proDesc2: "",
         premiumDesc1: "<strong>מה זה אתר פרימיום?</strong><br />אתר מתקדם עם מערכת רכישות מלאה, שמאפשר למכור מוצרים או שירותים אונליין בצורה מקצועית ואוטומטית.",
         premiumDesc2: "<strong>למי זה מתאים?</strong><br />לעסקים שרוצים למכור אונליין, להגדיל הכנסות ולעבוד בצורה אוטומטית 24/7.",
         want: "אני רוצה!",
@@ -467,8 +507,8 @@
     if (badges[1]) badges[1].textContent = content.pro;
     if (badges[2]) badges[2].textContent = content.premium;
     const lists = document.querySelectorAll(".pricing-card__list");
-    if (lists[0]) lists[0].innerHTML = `<p>${content.basicDesc1}</p><p>${content.basicDesc2}</p>`;
-    if (lists[1]) lists[1].innerHTML = `<p>${content.proDesc1}</p><p>${content.proDesc2}</p>`;
+    if (lists[0]) lists[0].innerHTML = content.basicDesc1;
+    if (lists[1]) lists[1].innerHTML = content.proDesc1;
     if (lists[2]) lists[2].innerHTML = `<p>${content.premiumDesc1}</p><p>${content.premiumDesc2}</p>`;
     const ctaButtons = document.querySelectorAll(".cards--demand .btn");
     if (ctaButtons[0]) ctaButtons[0].textContent = content.want;
@@ -929,6 +969,17 @@
   const cursorDot = document.getElementById("cursorDot");
   const clickableSelector =
     "a, button, [role='button'], input[type='button'], input[type='submit'], .btn, .growth-toggle, .hero-benefit, summary";
+
+  document.addEventListener("click", (event) => {
+    const trigger = event.target.closest(".pricing-card__accordion-trigger");
+    if (!trigger) return;
+    const accordion = trigger.closest(".pricing-card__accordion");
+    const content = accordion?.querySelector(".pricing-card__accordion-content");
+    if (!accordion || !content) return;
+    const isOpen = accordion.classList.toggle("is-open");
+    trigger.setAttribute("aria-expanded", String(isOpen));
+    content.setAttribute("aria-hidden", String(!isOpen));
+  });
 
   if (cursorDot && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
     const moveCursor = (event) => {
