@@ -70,9 +70,9 @@
   <div class="a11y-modal" id="landingA11yModal" aria-hidden="true">
     <div class="a11y-modal__backdrop" data-close-landing-a11y></div>
     <section class="a11y-modal__panel" role="dialog" aria-modal="true" aria-labelledby="landingA11yTitle">
-      <button type="button" class="a11y-modal__close" data-close-landing-a11y aria-label="סגירה">×</button>
-      <h2 id="landingA11yTitle">נגישות</h2>
-      <p class="a11y-modal__text">לסיוע בנגישות ניתן לפנות ל־<a href="mailto:shilohdhd1@gmail.com">shilohdhd1@gmail.com</a>.</p>
+      <button type="button" class="a11y-modal__close" data-close-landing-a11y data-he="&#1505;&#1490;&#1497;&#1512;&#1492;" data-en="Close" aria-label="&#1505;&#1490;&#1497;&#1512;&#1492;">?</button>
+      <h2 id="landingA11yTitle" data-he="&#1504;&#1490;&#1497;&#1513;&#1493;&#1514;" data-en="Accessibility">&#1504;&#1490;&#1497;&#1513;&#1493;&#1514;</h2>
+      <p class="a11y-modal__text" data-he="&#1500;&#1505;&#1497;&#1493;&#1506; &#1489;&#1504;&#1490;&#1497;&#1513;&#1493;&#1514; &#1504;&#1497;&#1514;&#1503; &#1500;&#1508;&#1504;&#1493;&#1514; &#1500;&#8207;<a href=&quot;mailto:shilohdhd1@gmail.com&quot;>shilohdhd1@gmail.com</a>." data-en="For accessibility support, contact <a href=&quot;mailto:shilohdhd1@gmail.com&quot;>shilohdhd1@gmail.com</a>.">&#1500;&#1505;&#1497;&#1493;&#1506; &#1489;&#1504;&#1490;&#1497;&#1513;&#1493;&#1514; &#1504;&#1497;&#1514;&#1503; &#1500;&#1508;&#1504;&#1493;&#1514; &#1500;&#8207;<a href="mailto:shilohdhd1@gmail.com">shilohdhd1@gmail.com</a>.</p>
     </section>
   </div>
   <div class="cursor-dot" id="cursorDot" aria-hidden="true">
@@ -83,6 +83,9 @@
       const html = document.documentElement;
       const btn = document.getElementById("langToggleLP");
       const waLangLinks = document.querySelectorAll("[data-wa-he][data-wa-en]");
+      const landingA11yTitle = document.getElementById("landingA11yTitle");
+      const landingA11yText = document.querySelector(".a11y-modal__text");
+      const landingA11yClose = document.querySelector(".a11y-modal__close");
       const a11yModal = document.getElementById("landingA11yModal");
       const a11yTrigger = document.getElementById("landingA11yTrigger");
       const a11yCloseEls = document.querySelectorAll("[data-close-landing-a11y]");
@@ -97,9 +100,10 @@
         waLangLinks.forEach((link) => {
           link.href = lang === "en" ? link.getAttribute("data-wa-en") : link.getAttribute("data-wa-he");
         });
-        btn.textContent = lang === "en" ? "עב" : "EN";
+        btn.textContent = lang === "en" ? "\u05e2\u05d1" : "EN";
       }
       btn.addEventListener("click", () => applyLang(html.lang === "he" ? "en" : "he"));
+      applyLang("he");
       if (a11yTrigger && a11yModal) {
         a11yTrigger.addEventListener("click", () => {
           a11yModal.classList.add("is-open");

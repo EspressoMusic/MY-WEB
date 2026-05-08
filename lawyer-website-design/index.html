@@ -82,9 +82,9 @@
   <div class="a11y-modal" id="landingA11yModal" aria-hidden="true">
     <div class="a11y-modal__backdrop" data-close-landing-a11y></div>
     <section class="a11y-modal__panel" role="dialog" aria-modal="true" aria-labelledby="landingA11yTitle">
-      <button type="button" class="a11y-modal__close" data-close-landing-a11y aria-label="?????">?</button>
-      <h2 id="landingA11yTitle">??????</h2>
-      <p class="a11y-modal__text">????? ???????, ??????? ?? ????? ??????? ???? ????? ??<a href="mailto:shilohdhd1@gmail.com">shilohdhd1@gmail.com</a>.</p>
+      <button type="button" class="a11y-modal__close" data-close-landing-a11y data-he="&#1505;&#1490;&#1497;&#1512;&#1492;" data-en="Close" aria-label="&#1505;&#1490;&#1497;&#1512;&#1492;">?</button>
+      <h2 id="landingA11yTitle" data-he="&#1504;&#1490;&#1497;&#1513;&#1493;&#1514;" data-en="Accessibility">&#1504;&#1490;&#1497;&#1513;&#1493;&#1514;</h2>
+      <p class="a11y-modal__text" data-he="&#1500;&#1505;&#1497;&#1493;&#1506; &#1489;&#1504;&#1490;&#1497;&#1513;&#1493;&#1514; &#1504;&#1497;&#1514;&#1503; &#1500;&#1508;&#1504;&#1493;&#1514; &#1500;&#8207;<a href=&quot;mailto:shilohdhd1@gmail.com&quot;>shilohdhd1@gmail.com</a>." data-en="For accessibility support, contact <a href=&quot;mailto:shilohdhd1@gmail.com&quot;>shilohdhd1@gmail.com</a>.">&#1500;&#1505;&#1497;&#1493;&#1506; &#1489;&#1504;&#1490;&#1497;&#1513;&#1493;&#1514; &#1504;&#1497;&#1514;&#1503; &#1500;&#1508;&#1504;&#1493;&#1514; &#1500;&#8207;<a href="mailto:shilohdhd1@gmail.com">shilohdhd1@gmail.com</a>.</p>
     </section>
   </div>
 
@@ -99,6 +99,9 @@
       const a11yTrigger = document.getElementById("landingA11yTrigger");
       const a11yCloseEls = document.querySelectorAll("[data-close-landing-a11y]");
       const waLangLinks = document.querySelectorAll("[data-wa-he][data-wa-en]");
+      const landingA11yTitle = document.getElementById("landingA11yTitle");
+      const landingA11yText = document.querySelector(".a11y-modal__text");
+      const landingA11yClose = document.querySelector(".a11y-modal__close");
       function applyLang(lang) {
         html.lang = lang;
         html.dir = lang === "en" ? "ltr" : "rtl";
@@ -110,9 +113,13 @@
         waLangLinks.forEach((link) => {
           link.href = lang === "en" ? link.getAttribute("data-wa-en") : link.getAttribute("data-wa-he");
         });
-        btn.textContent = lang === "en" ? "??" : "EN";
+        btn.textContent = lang === "en" ? "\u05e2\u05d1" : "EN";
+        if (landingA11yTitle) landingA11yTitle.textContent = lang === "en" ? (landingA11yTitle.getAttribute("data-en") || "Accessibility") : (landingA11yTitle.getAttribute("data-he") || "\u05e0\u05d2\u05d9\u05e9\u05d5\u05ea");
+        if (landingA11yText) landingA11yText.innerHTML = lang === "en" ? (landingA11yText.getAttribute("data-en") || "For accessibility support, contact <a href=\"mailto:shilohdhd1@gmail.com\">shilohdhd1@gmail.com</a>.") : (landingA11yText.getAttribute("data-he") || "\u05dc\u05e1\u05d9\u05d5\u05e2 \u05d1\u05e0\u05d2\u05d9\u05e9\u05d5\u05ea \u05e0\u05d9\u05ea\u05df \u05dc\u05e4\u05e0\u05d5\u05ea \u05dc\u05d0<a href=\"mailto:shilohdhd1@gmail.com\">shilohdhd1@gmail.com</a>.");
+        if (landingA11yClose) landingA11yClose.setAttribute("aria-label", lang === "en" ? (landingA11yClose.getAttribute("data-en") || "Close") : (landingA11yClose.getAttribute("data-he") || "\u05e1\u05d2\u05d9\u05e8\u05d4"));
       }
       btn.addEventListener("click", () => applyLang(html.lang === "he" ? "en" : "he"));
+      applyLang("he");
       if (a11yTrigger && a11yModal) {
         a11yTrigger.addEventListener("click", () => {
           a11yModal.classList.add("is-open");
