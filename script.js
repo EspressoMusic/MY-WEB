@@ -325,6 +325,11 @@
     if (testimonialsHeading) testimonialsHeading.textContent = content.testimonialsTitle;
     const testimonialsSub = document.querySelector(".section--testimonials .section-header__sub");
     if (testimonialsSub) testimonialsSub.textContent = content.testimonialsSub;
+    const testimonialTexts = document.querySelectorAll(".testimonial-card__text");
+    testimonialTexts.forEach((item) => {
+      const nextText = nextLang === "en" ? item.getAttribute("data-en") : item.getAttribute("data-he");
+      if (nextText) item.textContent = nextText;
+    });
     const miniSection = document.querySelector(".mini-game");
     if (miniSection) miniSection.setAttribute("aria-label", content.miniAria);
     const miniText = document.querySelector(".mini-game__head p");
