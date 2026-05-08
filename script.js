@@ -107,6 +107,56 @@
         chatTitle: "How can I help you today?",
         a11yCloseAria: "Close accessibility window",
         a11yTitle: "Website Accessibility",
+        a11yLegalHtml: `
+          <h1>Accessibility Statement</h1>
+          <p>At Picasow, we are committed to making our website and digital services accessible to all users, including people with disabilities.</p>
+          <p>This website is built with continuous effort to provide a clear, usable, and accessible experience.</p>
+          <h2>Accessibility Adjustments Implemented</h2>
+          <ul>
+            <li>Mobile and tablet responsive support</li>
+            <li>Clear and simple site navigation structure</li>
+            <li>Logical heading hierarchy and content flow</li>
+            <li>Readable text and baseline contrast support</li>
+            <li>Basic keyboard navigation support</li>
+            <li>Ongoing ALT text additions for images and visual content</li>
+          </ul>
+          <p>Despite our efforts, some areas may not yet be fully accessible. We continue improving accessibility on an ongoing basis.</p>
+          <h2>Accessibility Contact</h2>
+          <p>If you encounter any accessibility issue, please contact us at:</p>
+          <p><strong>shilohdhd1@gmail.com</strong></p>
+          <p>Last updated: 07/05/2026</p>
+          <hr>
+          <h1>Privacy Policy</h1>
+          <p>Your privacy is important to us. This policy explains how information may be collected and used.</p>
+          <h2>Information Collection</h2>
+          <p>The website may collect basic information submitted voluntarily by users, such as name, email, phone number, or other details provided through forms.</p>
+          <h2>Use of Information</h2>
+          <p>Information may be used for contacting users, providing services, improving user experience, operating the website, and delivering relevant updates.</p>
+          <h2>Data Security</h2>
+          <p>We apply reasonable measures to protect information, but no online transmission can be guaranteed as absolutely secure.</p>
+          <h2>Third-Party Services</h2>
+          <p>The website may include links or services from third parties. Their use is subject to those third parties' own policies.</p>
+          <h2>Contact</h2>
+          <p>For privacy questions, contact: <strong>shilohdhd1@gmail.com</strong></p>
+          <hr>
+          <h1>Terms of Use</h1>
+          <p>Using this website constitutes full agreement to these terms.</p>
+          <h2>Website Usage</h2>
+          <p>You may not use the website, its content, or services for unlawful purposes.</p>
+          <h2>Intellectual Property</h2>
+          <p>All content, design, logos, images, code, and materials on this website belong to Picasow and may not be copied or used without prior written permission.</p>
+          <h2>Limitation of Liability</h2>
+          <p>The website and services are provided "AS IS". We do not guarantee the website will be free of errors, interruptions, or inaccuracies.</p>
+          <p>Use of the website and services is at your own responsibility.</p>
+          <p>Website management shall not be liable for any direct or indirect damage, data loss, loss of profits, or other damage resulting from website use or reliance on its content.</p>
+          <h2>Changes</h2>
+          <p>Website management may update, change, or remove content, services, or terms at any time without prior notice.</p>
+          <h2>Jurisdiction</h2>
+          <p>Use of this website is governed by the laws of the State of Israel.</p>
+          <p>Exclusive jurisdiction for any dispute is the competent courts in Israel.</p>
+          <h2>Contact</h2>
+          <p>For any question, contact: <strong>shilohdhd1@gmail.com</strong></p>
+        `,
         a11yIntro: "We work to make this site accessible in accordance with Israeli accessibility law and the Israeli Standard 5568 at AA level (based on WCAG 2.0/2.1).",
         a11ySummary: "Accessibility statement and policy",
         a11yP1: "<strong>Accessibility implemented:</strong> clear heading hierarchy, keyboard navigation support, improved contrast, relevant alternative text, and semantic structure for screen readers.",
@@ -217,6 +267,56 @@
         chatTitle: "איך אוכל לעזור לך היום?",
         a11yCloseAria: "סגירת חלון נגישות",
         a11yTitle: "נגישות האתר",
+        a11yLegalHtml: `
+          <h1>הצהרת נגישות</h1>
+          <p>אנו ב־Picasow רואים חשיבות רבה בהנגשת האתר והשירותים הדיגיטליים לכלל המשתמשים, כולל אנשים עם מוגבלויות.</p>
+          <p>האתר נבנה תוך מאמץ לספק חוויית שימוש נוחה, ברורה ונגישה ככל האפשר, בהתאם לעקרונות הנגישות המקובלים.</p>
+          <h2>התאמות נגישות שבוצעו באתר</h2>
+          <ul>
+            <li>התאמה למובייל וטאבלטים</li>
+            <li>מבנה אתר ברור ונוח לניווט</li>
+            <li>שימוש בכותרות ומבנה תוכן מסודר</li>
+            <li>טקסטים קריאים וניגודיות בסיסית</li>
+            <li>אפשרות שימוש בסיסית באמצעות מקלדת</li>
+            <li>מאמץ להוספת תיאורי ALT לתמונות ותכנים חזותיים</li>
+          </ul>
+          <p>למרות המאמצים להנגיש את כלל חלקי האתר, ייתכן שחלקים מסוימים עדיין אינם נגישים באופן מלא. אנו ממשיכים לפעול לשיפור הנגישות באופן שוטף.</p>
+          <h2>פנייה בנושא נגישות</h2>
+          <p>אם נתקלתם בבעיה או בקושי בנושא נגישות באתר, ניתן ליצור קשר באמצעות כתובת האימייל:</p>
+          <p><strong>shilohdhd1@gmail.com</strong></p>
+          <p>תאריך עדכון אחרון: 07/05/2026</p>
+          <hr>
+          <h1>מדיניות פרטיות</h1>
+          <p>הפרטיות של משתמשי האתר חשובה לנו. מסמך זה מסביר כיצד נאסף ונעשה שימוש במידע באתר.</p>
+          <h2>איסוף מידע</h2>
+          <p>ייתכן שהאתר אוסף מידע בסיסי שהמשתמש מוסר מרצונו, לרבות שם, כתובת אימייל, מספר טלפון או כל מידע אחר הנשלח דרך טפסים באתר.</p>
+          <h2>שימוש במידע</h2>
+          <p>המידע עשוי לשמש לצורך יצירת קשר עם המשתמש, מתן שירות, שיפור חוויית המשתמש, תפעול האתר, שליחת הצעות או מידע רלוונטי ושיפור השירותים המוצעים באתר.</p>
+          <h2>אבטחת מידע</h2>
+          <p>נעשים מאמצים סבירים לשמור על המידע בצורה מאובטחת, אך אין אפשרות להבטיח אבטחה מוחלטת של מידע המועבר דרך האינטרנט.</p>
+          <h2>שימוש באתרי צד שלישי</h2>
+          <p>ייתכן שהאתר יכלול קישורים, שירותים או כלים חיצוניים של צדדים שלישיים. השימוש בהם כפוף למדיניות של אותם גורמים בלבד.</p>
+          <h2>יצירת קשר</h2>
+          <p>לכל שאלה בנושא פרטיות ניתן ליצור קשר: <strong>shilohdhd1@gmail.com</strong></p>
+          <hr>
+          <h1>תנאי שימוש</h1>
+          <p>השימוש באתר מהווה הסכמה מלאה לתנאים המפורטים להלן.</p>
+          <h2>שימוש באתר</h2>
+          <p>אין לעשות שימוש בלתי חוקי באתר, בתכניו או בשירותים המוצעים בו.</p>
+          <h2>קניין רוחני</h2>
+          <p>כלל התכנים, העיצובים, הלוגואים, התמונות, הקוד והחומרים באתר שייכים ל־Picasow ואין להעתיק, לשכפל או להשתמש בהם ללא אישור מראש ובכתב.</p>
+          <h2>הגבלת אחריות</h2>
+          <p>המידע והשירותים באתר ניתנים כפי שהם (AS IS). הנהלת האתר אינה מתחייבת כי האתר יהיה נקי מתקלות, שגיאות, הפרעות או אי־דיוקים.</p>
+          <p>השימוש באתר ובשירותים המוצעים בו נעשה באחריות המשתמש בלבד.</p>
+          <p>הנהלת האתר לא תישא באחריות לכל נזק ישיר או עקיף, אובדן מידע, אובדן רווחים או כל נזק אחר שייגרם כתוצאה מהשימוש באתר או מהסתמכות על המידע המופיע בו.</p>
+          <h2>שינויים באתר</h2>
+          <p>הנהלת האתר רשאית לעדכן, לשנות או להסיר תכנים, שירותים או תנאים בכל עת וללא הודעה מוקדמת.</p>
+          <h2>דין וסמכות שיפוט</h2>
+          <p>השימוש באתר כפוף לדיני מדינת ישראל בלבד.</p>
+          <p>סמכות השיפוט הבלעדית בכל מחלוקת תהיה בבתי המשפט המוסמכים בישראל.</p>
+          <h2>יצירת קשר</h2>
+          <p>לכל שאלה ניתן ליצור קשר: <strong>shilohdhd1@gmail.com</strong></p>
+        `,
         a11yIntro: "אנו פועלים להנגשת האתר בהתאם להוראות חוק שוויון זכויות לאנשים עם מוגבלות, תשנ\"ח-1998, תקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות לשירות), תשע\"ג-2013, ובהתאם לתקן הישראלי ת\"י 5568 ברמת AA (המבוסס על WCAG 2.0/2.1).",
         a11ySummary: "תקנון והצהרת נגישות",
         a11yP1: "<strong>מה בוצע באתר:</strong> היררכיית כותרות ברורה, תמיכה בניווט מקלדת, ניגודיות משופרת, טקסטים חלופיים לאלמנטים רלוונטיים, ומבנה סמנטי מותאם לקוראי מסך.",
@@ -396,6 +496,8 @@
     }
     const a11yTitle = document.getElementById("a11yTitle");
     if (a11yTitle) a11yTitle.textContent = content.a11yTitle;
+    const legalContentEl = document.getElementById("a11yLegalContent");
+    if (legalContentEl) legalContentEl.innerHTML = content.a11yLegalHtml;
     const a11yClose = document.querySelector(".a11y-modal__close");
     if (a11yClose) a11yClose.setAttribute("aria-label", content.a11yCloseAria);
     const a11yIntro = document.querySelector(".a11y-modal__text");
