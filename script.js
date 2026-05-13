@@ -1093,5 +1093,142 @@
     scrollObserver.observe(el);
   });
 
+  const quoteForm = document.getElementById("quoteForm");
+  const quoteName = document.getElementById("quoteName");
+  const quotePhone = document.getElementById("quotePhone");
+  const quoteChoicesField = document.getElementById("quoteChoices");
+  const thankYouBanner = document.getElementById("thankYouBanner");
+  const confettiContainer = document.getElementById("confetti");
+  const quoteSection = document.getElementById("quote");
+
+  function applyQuoteLang(lang) {
+    const nextLang = lang === "en" ? "en" : "he";
+    const scopes = [quoteSection, thankYouBanner].filter(Boolean);
+    scopes.forEach((scope) => {
+      scope.querySelectorAll("[data-he][data-en]").forEach((el) => {
+        const value = nextLang === "en" ? el.getAttribute("data-en") : el.getAttribute("data-he");
+        if (value != null) el.textContent = value;
+      });
+      scope.querySelectorAll("[data-he-placeholder][data-en-placeholder]").forEach((el) => {
+        const value = nextLang === "en" ? el.getAttribute("data-en-placeholder") : el.getAttribute("data-he-placeholder");
+        if (value != null) el.setAttribute("placeholder", value);
+      });
+    });
+  }
+
+  applyQuoteLang(currentLang);
+  const quoteLangBtn = document.getElementById("languageToggle");
+  if (quoteLangBtn) {
+    quoteLangBtn.addEventListener("click", () => {
+      applyQuoteLang(currentLang);
+    });
+  }
+
+  function setFieldError(field, hasError) {
+    if (!field) return;
+    field.classList.toggle("is-invalid", hasError);
+    const errEl = document.querySelector('[data-error-for="' + field.id + '"]');
+    if (errEl) errEl.classList.toggle("is-visible", hasError);
+  }
+
+  function setChoicesError(hasError) {
+    if (quoteChoicesField) quoteChoicesField.classList.toggle("is-invalid", hasError);
+    const errEl = document.querySelector('[data-error-for="quoteChoices"]');
+    if (errEl) errEl.classList.toggle("is-visible", hasError);
+  }
+
+  function validateQuoteForm() {
+    let valid = true;
+    const name = (quoteName?.value || "").trim();
+    if (name.length < 2) { setFieldError(quoteName, true); valid = false; } else setFieldError(quoteName, false);
+    const rawPhone = (quotePhone?.value || "").replace(/[\s\-().]/g, "");
+    const phoneOk = /^0\d{8,9}$/.test(rawPhone) || /^\+?972\d{8,9}$/.test(rawPhone);
+    if (!phoneOk) { setFieldError(quotePhone, true); valid = false; } else setFieldError(quotePhone, false);
+    const chosen = quoteForm ? quoteForm.querySelector('input[name="package"]:checked') : null;
+    if (!chosen) { setChoicesError(true); valid = false; } else setChoicesError(false);
+    return valid;
+  }
+
+  function fireConfetti() {
+    if (!confettiContainer) return;
+    confettiContainer.innerHTML = "";
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) return;
+    const colors = ["#22c55e", "#16a34a", "#f59e0b", "#ef4444", "#8b5cf6", "#06b6d4", "#ec4899", "#facc15"];
+    const count = 110;
+    const frag = document.createDocumentFragment();
+    for (let i = 0; i < count; i++) {
+      const piece = document.createElement("span");
+      piece.className = "confetti__piece";
+      piece.style.left = (Math.random() * 100) + "%";
+      piece.style.background = colors[i % colors.length];
+      piece.style.setProperty("--confetti-x", (Math.random() * 280 - 140) + "px");
+      piece.style.setProperty("--confetti-rot", (Math.random() * 720 - 360) + "deg");
+      piece.style.setProperty("--confetti-duration", (2.6 + Math.random() * 2.1) + "s");
+      piece.style.setProperty("--confetti-delay", (Math.random() * 0.45) + "s");
+      piece.style.width = (6 + Math.random() * 6) + "px";
+      piece.style.height = (10 + Math.random() * 10) + "px";
+      frag.appendChild(piece);
+    }
+    confettiContainer.appendChild(frag);
+  }
+
+  let thankYouTimer = null;
+  function openThankYou() {
+    if (!thankYouBanner) return;
+    thankYouBanner.classList.add("is-open");
+    thankYouBanner.setAttribute("aria-hidden", "false");
+    fireConfetti();
+    if (thankYouTimer) clearTimeout(thankYouTimer);
+    thankYouTimer = setTimeout(closeThankYou, 6000);
+  }
+  function closeThankYou() {
+    if (!thankYouBanner) return;
+    thankYouBanner.classList.remove("is-open");
+    thankYouBanner.setAttribute("aria-hidden", "true");
+    if (confettiContainer) confettiContainer.innerHTML = "";
+  }
+
+  if (thankYouBanner) {
+    thankYouBanner.addEventListener("click", (event) => {
+      if (event.target.closest("[data-close-thank-you]") || event.target === thankYouBanner) {
+        closeThankYou();
+      }
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && thankYouBanner.classList.contains("is-open")) closeThankYou();
+    });
+  }
+
+  if (quoteForm) {
+    [quoteName, quotePhone].forEach((el) => {
+      if (el) el.addEventListener("input", () => setFieldError(el, false));
+    });
+    quoteForm.querySelectorAll('input[name="package"]').forEach((radio) => {
+      radio.addEventListener("change", () => setChoicesError(false));
+    });
+
+    quoteForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!validateQuoteForm()) return;
+      playQuoteSuccessSound();
+      openThankYou();
+      quoteForm.reset();
+    });
+  }
+
+  const quoteSuccessAudio = document.getElementById("quoteSuccessSound");
+  function playQuoteSuccessSound() {
+    if (!quoteSuccessAudio) return;
+    try {
+      quoteSuccessAudio.currentTime = 0;
+      quoteSuccessAudio.volume = 0.85;
+      const playPromise = quoteSuccessAudio.play();
+      if (playPromise && typeof playPromise.catch === "function") {
+        playPromise.catch(() => {});
+      }
+    } catch (_) { /* ignore audio errors */ }
+  }
+
 })();
 

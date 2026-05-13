@@ -258,6 +258,45 @@
     </article>
   </section>
 
+  <section class="section section--quote" id="quote" aria-labelledby="quote-heading">
+    <header class="section-header section-header--center reveal">
+      <h2 id="quote-heading" data-he="השאירו פרטים ונחזור אליכם במהירות הבזק" data-en="Leave your details and we'll get back to you at the speed of light">השאירו פרטים ונחזור אליכם במהירות הבזק</h2>
+      <p class="section-header__sub" data-he="ייעוץ והצעת מחיר ראשונית — בלי התחייבות" data-en="Initial consultation and quote — no commitment">ייעוץ והצעת מחיר ראשונית — בלי התחייבות</p>
+    </header>
+
+    <form class="quote-form reveal" id="quoteForm" novalidate aria-labelledby="quote-heading">
+      <div class="quote-form__row">
+        <label class="quote-form__label" for="quoteName">
+          <span data-he="שם מלא" data-en="Full name">שם מלא</span>
+          <input class="quote-form__input" type="text" id="quoteName" name="name" autocomplete="name" required minlength="2" data-he-placeholder="לדוגמה: ישראל ישראלי" data-en-placeholder="e.g. John Doe" placeholder="לדוגמה: ישראל ישראלי" />
+          <span class="quote-form__error" data-error-for="quoteName" data-he="נא להזין שם מלא (לפחות 2 תווים)" data-en="Please enter your full name (at least 2 characters)">נא להזין שם מלא (לפחות 2 תווים)</span>
+        </label>
+        <label class="quote-form__label" for="quotePhone">
+          <span data-he="מספר טלפון" data-en="Phone number">מספר טלפון</span>
+          <input class="quote-form__input" type="tel" id="quotePhone" name="phone" autocomplete="tel" inputmode="tel" required data-he-placeholder="לדוגמה: 050-1234567" data-en-placeholder="e.g. 050-1234567" placeholder="לדוגמה: 050-1234567" />
+          <span class="quote-form__error" data-error-for="quotePhone" data-he="נא להזין מספר טלפון תקין (9 או 10 ספרות)" data-en="Please enter a valid phone number (9 or 10 digits)">נא להזין מספר טלפון תקין (9 או 10 ספרות)</span>
+        </label>
+      </div>
+
+      <fieldset class="quote-form__choices" id="quoteChoices">
+        <legend class="quote-form__legend" data-he="איזה אתר אתם רוצים?" data-en="Which website do you want?">איזה אתר אתם רוצים?</legend>
+        <label class="quote-choice">
+          <input type="radio" name="package" value="image" required />
+          <span class="quote-choice__title" data-he="אני רוצה אתר תדמית" data-en="I want a brand website">אני רוצה אתר תדמית</span>
+          <span class="quote-choice__sub" data-he="נוכחות מקצועית, ברורה וממוקדת לעסק שלכם" data-en="A clear, professional brand presence for your business">נוכחות מקצועית, ברורה וממוקדת לעסק שלכם</span>
+        </label>
+        <label class="quote-choice">
+          <input type="radio" name="package" value="pro" required />
+          <span class="quote-choice__title" data-he="אני רוצה אתר מקצועי" data-en="I want a professional website">אני רוצה אתר מקצועי</span>
+          <span class="quote-choice__sub" data-he="אתר ממיר לעסקים שרוצים יותר לידים ולקוחות" data-en="A conversion-focused site for businesses that want more leads">אתר ממיר לעסקים שרוצים יותר לידים ולקוחות</span>
+        </label>
+        <span class="quote-form__error" data-error-for="quoteChoices" data-he="נא לבחור אחת מהאפשרויות" data-en="Please pick one option">נא לבחור אחת מהאפשרויות</span>
+      </fieldset>
+
+      <button type="submit" class="quote-form__submit" data-he="שליחה וקבלת הצעת מחיר" data-en="Send and get a quote">שליחה וקבלת הצעת מחיר</button>
+    </form>
+  </section>
+
   <section class="mini-game section" aria-label="הערת מחיר">
     <header class="mini-game__head">
       <h2 class="sr-only">מידע חשוב על מחירים</h2>
@@ -370,6 +409,18 @@
     <span class="cursor-dot__label">תלחץ עליי</span>
   </div>
 
-  <script src="script.js?v=20260508-accordion-12"></script>
+  <div class="thank-you" id="thankYouBanner" role="alertdialog" aria-modal="true" aria-labelledby="thankYouTitle" aria-hidden="true">
+    <div class="thank-you__card">
+      <button type="button" class="thank-you__close" data-close-thank-you aria-label="סגירה">×</button>
+      <div class="thank-you__icon" aria-hidden="true">✓</div>
+      <h3 class="thank-you__title" id="thankYouTitle" data-he="הטופס נשלח בהצלחה!" data-en="Form sent successfully!">הטופס נשלח בהצלחה!</h3>
+      <p class="thank-you__text" data-he="קיבלנו את הפרטים — אנחנו חוזרים אליך במהירות הבזק" data-en="We received your details — we'll get back to you at the speed of light">קיבלנו את הפרטים — אנחנו חוזרים אליך במהירות הבזק</p>
+    </div>
+    <div class="confetti" id="confetti" aria-hidden="true"></div>
+  </div>
+
+  <audio id="quoteSuccessSound" src="success.mp3" preload="auto"></audio>
+
+  <script src="script.js?v=20260513-quote-2"></script>
 </body>
 </html>
