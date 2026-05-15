@@ -3417,3 +3417,15 @@ html[lang="he"] .hero__brand-text {
   z-index: 1;
 }
 
+/* Success / payment pages: always show the normal system cursor */
+.use-system-cursor,
+.use-system-cursor * {
+  cursor: auto !important;
+}
+
+.use-system-cursor a,
+.use-system-cursor button,
+.use-system-cursor [role="button"] {
+  cursor: pointer !important;
+}
+

@@ -18,9 +18,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@500;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/styles.css?v=20260516-cursor-fix" />
+  <style>
+    .success-page-body,
+    .success-page-body * {
+      cursor: auto !important;
+    }
+    .success-page-body a,
+    .success-page-body button {
+      cursor: pointer !important;
+    }
+  </style>
 </head>
-<body class="success-page-body">
+<body class="success-page-body use-system-cursor">
   <main class="success-page" id="successPage">
     <article class="success-page__card" id="successCard">
       <div class="success-page__icon" id="successIcon" aria-hidden="true">✓</div>
@@ -45,6 +55,6 @@
     <div class="confetti success-page__confetti" id="confetti" aria-hidden="true"></div>
   </main>
   <audio id="quoteSuccessSound" src="/success.mp3" preload="auto"></audio>
-  <script src="/success.js?v=20260515-success-2"></script>
+  <script src="/success.js?v=20260516-cursor-fix"></script>
 </body>
 </html>
