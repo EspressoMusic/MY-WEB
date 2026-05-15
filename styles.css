@@ -2849,8 +2849,8 @@ html[lang="he"] .hero__brand-text {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  body,
-  body * {
+  body:has(.cursor-dot),
+  body:has(.cursor-dot) * {
     cursor: none !important;
   }
 
