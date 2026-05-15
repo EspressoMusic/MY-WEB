@@ -1098,18 +1098,15 @@
   const quotePhone = document.getElementById("quotePhone");
   const quotePackageField = document.getElementById("quotePackageField");
   const quoteChoicesField = document.getElementById("quoteChoices");
-  const thankYouBanner = document.getElementById("thankYouBanner");
-  const thankYouTitle = document.getElementById("thankYouTitle");
-  const thankYouText = document.getElementById("thankYouText");
-  const confettiContainer = document.getElementById("confetti");
   const quoteSection = document.getElementById("quote");
+  const SUCCESS_PAGE_URL = "/success.html";
   const WEB3FORMS_URL = "https://api.web3forms.com/submit";
   // כתובת Web App מ-Google Apps Script (ראה google-apps-script/quote-sms-webhook.gs + Twilio)
   const QUOTE_SMS_WEBHOOK_URL = "";
 
   function applyQuoteLang(lang) {
     const nextLang = lang === "en" ? "en" : "he";
-    const scopes = [quoteSection, thankYouBanner, thankYouTitle, thankYouText].filter(Boolean);
+    const scopes = [quoteSection].filter(Boolean);
     scopes.forEach((scope) => {
       scope.querySelectorAll("[data-he][data-en]").forEach((el) => {
         const value = nextLang === "en" ? el.getAttribute("data-en") : el.getAttribute("data-he");
@@ -1154,32 +1151,6 @@
     if (!chosen) { setChoicesError(true); valid = false; } else setChoicesError(false);
     return valid;
   }
-
-  function fireConfetti() {
-    if (!confettiContainer) return;
-    confettiContainer.innerHTML = "";
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduceMotion) return;
-    const colors = ["#22c55e", "#16a34a", "#f59e0b", "#ef4444", "#8b5cf6", "#06b6d4", "#ec4899", "#facc15"];
-    const count = 110;
-    const frag = document.createDocumentFragment();
-    for (let i = 0; i < count; i++) {
-      const piece = document.createElement("span");
-      piece.className = "confetti__piece";
-      piece.style.left = (Math.random() * 100) + "%";
-      piece.style.background = colors[i % colors.length];
-      piece.style.setProperty("--confetti-x", (Math.random() * 280 - 140) + "px");
-      piece.style.setProperty("--confetti-rot", (Math.random() * 720 - 360) + "deg");
-      piece.style.setProperty("--confetti-duration", (2.6 + Math.random() * 2.1) + "s");
-      piece.style.setProperty("--confetti-delay", (Math.random() * 0.45) + "s");
-      piece.style.width = (6 + Math.random() * 6) + "px";
-      piece.style.height = (10 + Math.random() * 10) + "px";
-      frag.appendChild(piece);
-    }
-    confettiContainer.appendChild(frag);
-  }
-
-  let thankYouTimer = null;
 
   function getPackageLabel(pkg) {
     const isPro = pkg === "pro";
@@ -1227,49 +1198,12 @@
     ]).then(([emailOk, smsOk]) => ({ emailOk, smsOk }));
   }
 
-  function setThankYouMessage(success) {
-    const lang = currentLang === "en" ? "en" : "he";
-    const mode = success ? "" : "-fail";
-    if (thankYouTitle) {
-      const titleAttr = lang === "en" ? "data-en" + mode : "data-he" + mode;
-      const title = thankYouTitle.getAttribute(titleAttr);
-      if (title) thankYouTitle.textContent = title;
-    }
-    if (thankYouText) {
-      const textAttr = lang === "en" ? "data-en" + mode : "data-he" + mode;
-      const text = thankYouText.getAttribute(textAttr);
-      if (text) thankYouText.textContent = text;
-    }
-    if (thankYouBanner) {
-      thankYouBanner.classList.toggle("thank-you--error", !success);
-    }
-  }
-
-  function openThankYou(success) {
-    if (!thankYouBanner) return;
-    setThankYouMessage(success);
-    thankYouBanner.classList.add("is-open");
-    thankYouBanner.setAttribute("aria-hidden", "false");
-    if (success) fireConfetti();
-    if (thankYouTimer) clearTimeout(thankYouTimer);
-    thankYouTimer = setTimeout(closeThankYou, success ? 6000 : 8000);
-  }
-  function closeThankYou() {
-    if (!thankYouBanner) return;
-    thankYouBanner.classList.remove("is-open", "thank-you--error");
-    thankYouBanner.setAttribute("aria-hidden", "true");
-    if (confettiContainer) confettiContainer.innerHTML = "";
-  }
-
-  if (thankYouBanner) {
-    thankYouBanner.addEventListener("click", (event) => {
-      if (event.target.closest("[data-close-thank-you]") || event.target === thankYouBanner) {
-        closeThankYou();
-      }
-    });
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && thankYouBanner.classList.contains("is-open")) closeThankYou();
-    });
+  function goToSuccessPage(success) {
+    try {
+      sessionStorage.setItem("picasow_lang", currentLang === "en" ? "en" : "he");
+    } catch (_) { /* ignore */ }
+    const suffix = success ? "" : "?error=1";
+    window.location.href = SUCCESS_PAGE_URL + suffix;
   }
 
   if (quoteForm) {
@@ -1292,30 +1226,9 @@
       if (submitBtn) submitBtn.disabled = true;
 
       deliverQuoteLead(name, phone, packageText).then(({ emailOk, smsOk }) => {
-        const ok = emailOk || smsOk;
-        if (ok) {
-          playQuoteSuccessSound();
-          openThankYou(true);
-          quoteForm.reset();
-        } else {
-          openThankYou(false);
-        }
-        if (submitBtn) submitBtn.disabled = false;
+        goToSuccessPage(emailOk || smsOk);
       });
     });
-  }
-
-  const quoteSuccessAudio = document.getElementById("quoteSuccessSound");
-  function playQuoteSuccessSound() {
-    if (!quoteSuccessAudio) return;
-    try {
-      quoteSuccessAudio.currentTime = 0;
-      quoteSuccessAudio.volume = 0.85;
-      const playPromise = quoteSuccessAudio.play();
-      if (playPromise && typeof playPromise.catch === "function") {
-        playPromise.catch(() => {});
-      }
-    } catch (_) { /* ignore audio errors */ }
   }
 
 })();
