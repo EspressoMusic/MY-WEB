@@ -1096,14 +1096,20 @@
   const quoteForm = document.getElementById("quoteForm");
   const quoteName = document.getElementById("quoteName");
   const quotePhone = document.getElementById("quotePhone");
+  const quotePackageField = document.getElementById("quotePackageField");
   const quoteChoicesField = document.getElementById("quoteChoices");
   const thankYouBanner = document.getElementById("thankYouBanner");
+  const thankYouTitle = document.getElementById("thankYouTitle");
+  const thankYouText = document.getElementById("thankYouText");
   const confettiContainer = document.getElementById("confetti");
   const quoteSection = document.getElementById("quote");
+  const WEB3FORMS_URL = "https://api.web3forms.com/submit";
+  // כתובת Web App מ-Google Apps Script (ראה google-apps-script/quote-sms-webhook.gs + Twilio)
+  const QUOTE_SMS_WEBHOOK_URL = "";
 
   function applyQuoteLang(lang) {
     const nextLang = lang === "en" ? "en" : "he";
-    const scopes = [quoteSection, thankYouBanner].filter(Boolean);
+    const scopes = [quoteSection, thankYouBanner, thankYouTitle, thankYouText].filter(Boolean);
     scopes.forEach((scope) => {
       scope.querySelectorAll("[data-he][data-en]").forEach((el) => {
         const value = nextLang === "en" ? el.getAttribute("data-en") : el.getAttribute("data-he");
@@ -1174,17 +1180,83 @@
   }
 
   let thankYouTimer = null;
-  function openThankYou() {
+
+  function getPackageLabel(pkg) {
+    const isPro = pkg === "pro";
+    return isPro
+      ? (currentLang === "en" ? "Professional website" : "אתר מקצועי")
+      : (currentLang === "en" ? "Brand website" : "אתר תדמית");
+  }
+
+  function submitQuoteViaWeb3Forms(name, phone, packageText) {
+    if (!quoteForm) return Promise.resolve(false);
+    const formData = new FormData(quoteForm);
+    formData.set("name", name);
+    formData.set("phone", phone);
+    formData.set("package", packageText);
+    formData.set(
+      "message",
+      "שם: " + name + "\nטלפון: " + phone + "\nחבילה: " + packageText
+    );
+    return fetch(WEB3FORMS_URL, {
+      method: "POST",
+      headers: { Accept: "application/json" },
+      body: formData,
+    })
+      .then((res) => res.json().then((data) => ({ ok: res.ok, data })))
+      .then(({ ok, data }) => Boolean(ok && data && data.success))
+      .catch(() => false);
+  }
+
+  function notifySmsViaWebhook(name, phone, packageText) {
+    if (!QUOTE_SMS_WEBHOOK_URL) return Promise.resolve(false);
+    const url = new URL(QUOTE_SMS_WEBHOOK_URL);
+    url.searchParams.set("name", name);
+    url.searchParams.set("phone", phone);
+    url.searchParams.set("package", packageText);
+    return fetch(url.toString(), { method: "GET", cache: "no-store" })
+      .then((res) => res.json())
+      .then((data) => Boolean(data && data.ok))
+      .catch(() => false);
+  }
+
+  function deliverQuoteLead(name, phone, packageText) {
+    return Promise.all([
+      submitQuoteViaWeb3Forms(name, phone, packageText),
+      notifySmsViaWebhook(name, phone, packageText),
+    ]).then(([emailOk, smsOk]) => ({ emailOk, smsOk }));
+  }
+
+  function setThankYouMessage(success) {
+    const lang = currentLang === "en" ? "en" : "he";
+    const mode = success ? "" : "-fail";
+    if (thankYouTitle) {
+      const titleAttr = lang === "en" ? "data-en" + mode : "data-he" + mode;
+      const title = thankYouTitle.getAttribute(titleAttr);
+      if (title) thankYouTitle.textContent = title;
+    }
+    if (thankYouText) {
+      const textAttr = lang === "en" ? "data-en" + mode : "data-he" + mode;
+      const text = thankYouText.getAttribute(textAttr);
+      if (text) thankYouText.textContent = text;
+    }
+    if (thankYouBanner) {
+      thankYouBanner.classList.toggle("thank-you--error", !success);
+    }
+  }
+
+  function openThankYou(success) {
     if (!thankYouBanner) return;
+    setThankYouMessage(success);
     thankYouBanner.classList.add("is-open");
     thankYouBanner.setAttribute("aria-hidden", "false");
-    fireConfetti();
+    if (success) fireConfetti();
     if (thankYouTimer) clearTimeout(thankYouTimer);
-    thankYouTimer = setTimeout(closeThankYou, 6000);
+    thankYouTimer = setTimeout(closeThankYou, success ? 6000 : 8000);
   }
   function closeThankYou() {
     if (!thankYouBanner) return;
-    thankYouBanner.classList.remove("is-open");
+    thankYouBanner.classList.remove("is-open", "thank-you--error");
     thankYouBanner.setAttribute("aria-hidden", "true");
     if (confettiContainer) confettiContainer.innerHTML = "";
   }
@@ -1211,9 +1283,25 @@
     quoteForm.addEventListener("submit", (event) => {
       event.preventDefault();
       if (!validateQuoteForm()) return;
-      playQuoteSuccessSound();
-      openThankYou();
-      quoteForm.reset();
+      const name = quoteName.value.trim();
+      const phone = quotePhone.value.trim();
+      const pkg = (quoteForm.querySelector('input[name="package"]:checked') || {}).value;
+      const packageText = getPackageLabel(pkg);
+      if (quotePackageField) quotePackageField.value = packageText;
+      const submitBtn = quoteForm.querySelector('button[type="submit"]');
+      if (submitBtn) submitBtn.disabled = true;
+
+      deliverQuoteLead(name, phone, packageText).then(({ emailOk, smsOk }) => {
+        const ok = emailOk || smsOk;
+        if (ok) {
+          playQuoteSuccessSound();
+          openThankYou(true);
+          quoteForm.reset();
+        } else {
+          openThankYou(false);
+        }
+        if (submitBtn) submitBtn.disabled = false;
+      });
     });
   }
 
