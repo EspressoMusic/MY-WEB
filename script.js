@@ -235,7 +235,7 @@
         ]
       }
       : {
-        pageTitle: "Picasow | בניית אתרים, עיצוב ופיתוח לעסקים",
+        pageTitle: "בניית אתרים לעסקים | פיקסו",
         lightLabel: "אור",
         darkLabel: "חושך",
         homeAria: "דף הבית",
