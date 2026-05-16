@@ -1545,6 +1545,10 @@ html[dir="rtl"] .pricing-card__list li {
   animation-delay: 0.7s;
 }
 
+.gallery-item--d {
+  animation-delay: 1.05s;
+}
+
 .testimonials-panel {
   position: relative;
   margin: 1.2rem auto 0;
