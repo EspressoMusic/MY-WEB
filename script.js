@@ -455,11 +455,11 @@
     if (portfolio) portfolio.textContent = content.portfolioAnchor;
     const demandHeading = document.getElementById("demand-heading");
     if (demandHeading) demandHeading.textContent = content.servicesTitle;
-    const servicesSub = document.querySelector("#development-pricing .section-header__sub");
+    const servicesSub = document.querySelector("#services .section-header__sub");
     if (servicesSub) servicesSub.textContent = content.servicesSub;
     const plansHeading = document.getElementById("plans-heading");
     if (plansHeading) plansHeading.textContent = content.galleryTitle;
-    const plansSub = document.querySelector("#saas-plans .section-header__sub");
+    const plansSub = document.querySelector("#gallery .section-header__sub");
     if (plansSub) plansSub.textContent = content.gallerySub;
     const galleryA = document.querySelector(".gallery-item--a");
     const galleryB = document.querySelector(".gallery-item--b");
@@ -1106,7 +1106,7 @@
   const quotePhone = document.getElementById("quotePhone");
   const quotePackageField = document.getElementById("quotePackageField");
   const quoteChoicesField = document.getElementById("quoteChoices");
-  const quoteSection = document.getElementById("quote");
+  const quoteSection = document.getElementById("contact");
   const SUCCESS_PAGE_URL = "/success.html";
   const WEB3FORMS_URL = "https://api.web3forms.com/submit";
   // כתובת Web App מ-Google Apps Script (ראה google-apps-script/quote-sms-webhook.gs + Twilio)
