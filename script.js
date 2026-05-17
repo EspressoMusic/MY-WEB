@@ -114,10 +114,12 @@
         galleryBAria: "Open Roomie project in a new tab",
         galleryCAria: "Open lawyer website project in a new tab",
         galleryDAria: "Open Brew Haven coffee shop website project in a new tab",
+        galleryEAria: "Open Picasow business website project in a new tab",
         galleryAltA: "DARION website design project",
         galleryAltB: "Roomie product showcase website project",
         galleryAltC: "Lawyer website project",
         galleryAltD: "Brew Haven coffee shop website project",
+        galleryAltE: "Picasow business website project",
         testimonialsTitle: "3 Big Advantages of Working With Us",
         testimonialsSub: "What you get when building your site with PICASOW",
         reviewsTitle: "Excited Client Reactions",
@@ -300,10 +302,12 @@
         galleryBAria: "פתיחת פרויקט Roomie בחלון חדש",
         galleryCAria: "פתיחת פרויקט אתר לעורך דין בחלון חדש",
         galleryDAria: "פתיחת פרויקט אתר בית קפה Brew Haven בחלון חדש",
+        galleryEAria: "פתיחת אתר Picasow בחלון חדש",
         galleryAltA: "פרויקט עיצוב אתר DARION",
         galleryAltB: "פרויקט אתר Roomie לתצוגת מוצר",
         galleryAltC: "פרויקט אתר לעורך דין",
         galleryAltD: "פרויקט אתר בית קפה Brew Haven",
+        galleryAltE: "אתר Picasow לבניית אתרים לעסקים",
         testimonialsTitle: "3 יתרונות גדולים של העבודה איתנו",
         testimonialsSub: "מה תקבלו כשבונים אתר עם PICASOW",
         reviewsTitle: "תגובות של התלהבות",
@@ -469,18 +473,22 @@
     const galleryB = document.querySelector(".gallery-item--b");
     const galleryC = document.querySelector(".gallery-item--c");
     const galleryD = document.querySelector(".gallery-item--d");
+    const galleryE = document.querySelector(".gallery-item--e");
     if (galleryA) galleryA.setAttribute("aria-label", content.galleryAAria);
     if (galleryB) galleryB.setAttribute("aria-label", content.galleryBAria);
     if (galleryC) galleryC.setAttribute("aria-label", content.galleryCAria);
     if (galleryD) galleryD.setAttribute("aria-label", content.galleryDAria);
+    if (galleryE) galleryE.setAttribute("aria-label", content.galleryEAria);
     const galleryAImg = document.querySelector(".gallery-item--a img");
     const galleryBImg = document.querySelector(".gallery-item--b img");
     const galleryCImg = document.querySelector(".gallery-item--c img");
     const galleryDImg = document.querySelector(".gallery-item--d img");
+    const galleryEImg = document.querySelector(".gallery-item--e img");
     if (galleryAImg) galleryAImg.alt = content.galleryAltA;
     if (galleryBImg) galleryBImg.alt = content.galleryAltB;
     if (galleryCImg) galleryCImg.alt = content.galleryAltC;
     if (galleryDImg) galleryDImg.alt = content.galleryAltD;
+    if (galleryEImg) galleryEImg.alt = content.galleryAltE;
     const testimonialsHeading = document.getElementById("testimonials-heading");
     if (testimonialsHeading) testimonialsHeading.textContent = content.testimonialsTitle;
     const testimonialsSub = document.querySelector(".section--testimonials .section-header__sub");

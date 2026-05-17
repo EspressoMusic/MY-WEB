@@ -1535,8 +1535,7 @@ html[dir="rtl"] .pricing-card__list li {
   transform: scale(1.08);
 }
 
-.gallery-item--b,
-.gallery-item--e {
+.gallery-item--b {
   animation-delay: 0.35s;
 }
 
@@ -1547,6 +1546,10 @@ html[dir="rtl"] .pricing-card__list li {
 
 .gallery-item--d {
   animation-delay: 1.05s;
+}
+
+.gallery-item--e {
+  animation-delay: 1.4s;
 }
 
 .testimonials-panel {
