@@ -494,15 +494,15 @@
       const nextText = nextLang === "en" ? item.getAttribute("data-en") : item.getAttribute("data-he");
       if (nextText) item.textContent = nextText;
     });
+    const clientReviewText = document.querySelector(".client-review-card .testimonial-card__text");
+    if (clientReviewText) {
+      const nextText = nextLang === "en" ? clientReviewText.getAttribute("data-en") : clientReviewText.getAttribute("data-he");
+      if (nextText) clientReviewText.textContent = nextText;
+    }
     const reviewName = document.querySelector(".client-review-card .testimonial-card__name");
     if (reviewName) {
       const nextName = nextLang === "en" ? reviewName.getAttribute("data-en") : reviewName.getAttribute("data-he");
       if (nextName) reviewName.textContent = nextName;
-    }
-    const reviewRole = document.querySelector(".client-review-card .testimonial-card__role");
-    if (reviewRole) {
-      const nextRole = nextLang === "en" ? reviewRole.getAttribute("data-en") : reviewRole.getAttribute("data-he");
-      if (nextRole) reviewRole.textContent = nextRole;
     }
     const miniSection = document.querySelector(".mini-game");
     if (miniSection) miniSection.setAttribute("aria-label", content.miniAria);

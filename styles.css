@@ -1661,6 +1661,10 @@ html[dir="rtl"] .pricing-card__list li {
   padding: clamp(1.35rem, 3vw, 1.75rem) clamp(1.1rem, 2.8vw, 1.5rem);
 }
 
+.client-review-card .testimonial-card__text {
+  white-space: pre-line;
+}
+
 .testimonial-card__quote {
   margin: 0;
   font-size: clamp(2rem, 5vw, 2.8rem);
