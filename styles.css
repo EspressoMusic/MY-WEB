@@ -1550,6 +1550,15 @@ html[dir="rtl"] .pricing-card__list li {
 
 .gallery-item--e {
   animation-delay: 1.4s;
+  background: #0f172a url("2233.png") center / cover no-repeat;
+}
+
+.gallery-item--e::before {
+  opacity: 0;
+}
+
+.gallery-item--e img {
+  object-fit: cover;
 }
 
 .testimonials-panel {
