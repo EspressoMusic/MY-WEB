@@ -120,6 +120,8 @@
         galleryAltD: "Brew Haven coffee shop website project",
         testimonialsTitle: "3 Big Advantages of Working With Us",
         testimonialsSub: "What you get when building your site with PICASOW",
+        reviewsTitle: "Excited Client Reactions",
+        reviewsSub: "What real clients shared after getting their new website",
         miniAria: "Price notice",
         footerNote: "Prices do not include hosting, domain, or special add-ons - full details are provided in the call.",
         policy: "Accessibility & Policy",
@@ -304,6 +306,8 @@
         galleryAltD: "פרויקט אתר בית קפה Brew Haven",
         testimonialsTitle: "3 יתרונות גדולים של העבודה איתנו",
         testimonialsSub: "מה תקבלו כשבונים אתר עם PICASOW",
+        reviewsTitle: "תגובות של התלהבות",
+        reviewsSub: "מה שאנשים אמיתיים סיפרו אחרי שקיבלו אתר חדש",
         miniAria: "הערת מחיר",
         footerNote: "המחירים אינם כוללים עלויות אחסון, דומיין ותוספות מיוחדות – פירוט מלא יינתן בשיחת הטלפון.",
         policy: "תקנון ומדיניות",
@@ -481,11 +485,25 @@
     if (testimonialsHeading) testimonialsHeading.textContent = content.testimonialsTitle;
     const testimonialsSub = document.querySelector(".section--testimonials .section-header__sub");
     if (testimonialsSub) testimonialsSub.textContent = content.testimonialsSub;
+    const reviewsHeading = document.getElementById("reviews-heading");
+    if (reviewsHeading) reviewsHeading.textContent = content.reviewsTitle;
+    const reviewsSub = document.querySelector(".section--reviews .section-header__sub");
+    if (reviewsSub) reviewsSub.textContent = content.reviewsSub;
     const testimonialTexts = document.querySelectorAll(".testimonial-card__text");
     testimonialTexts.forEach((item) => {
       const nextText = nextLang === "en" ? item.getAttribute("data-en") : item.getAttribute("data-he");
       if (nextText) item.textContent = nextText;
     });
+    const reviewName = document.querySelector(".client-review-card .testimonial-card__name");
+    if (reviewName) {
+      const nextName = nextLang === "en" ? reviewName.getAttribute("data-en") : reviewName.getAttribute("data-he");
+      if (nextName) reviewName.textContent = nextName;
+    }
+    const reviewRole = document.querySelector(".client-review-card .testimonial-card__role");
+    if (reviewRole) {
+      const nextRole = nextLang === "en" ? reviewRole.getAttribute("data-en") : reviewRole.getAttribute("data-he");
+      if (nextRole) reviewRole.textContent = nextRole;
+    }
     const miniSection = document.querySelector(".mini-game");
     if (miniSection) miniSection.setAttribute("aria-label", content.miniAria);
     const miniText = document.querySelector(".mini-game__head p");
