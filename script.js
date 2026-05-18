@@ -74,9 +74,9 @@
         servicesTitle: "Services",
         servicesSub: "Choose the website package that fits you",
         basic: "Starter",
-        basicPrice: "Business website for 2,500 ILS",
+        basicPrice: "Business website for 2,000 ILS",
         pro: "Professional",
-        proPrice: "Professional website + catalog for 5,900 ILS",
+        proPrice: "Professional website for 5,500 ILS",
         premium: "Premium",
         premiumPrice: "8,000-15,000+ ILS",
         soon: "COMING SOON",
@@ -262,9 +262,9 @@
         servicesTitle: "שירותים",
         servicesSub: "בחרו את האתר שמתאים לכם",
         basic: "מתחילים",
-        basicPrice: "אתר תדמית ב־2,500 ₪",
+        basicPrice: "אתר תדמית ב־2,000 ₪",
         pro: "מקצועי",
-        proPrice: "אתר מקצועי + קטלוג ב־5,900 ₪",
+        proPrice: "אתר מקצועי ב־5,500 ₪",
         premium: "פרימיום",
         premiumPrice: "8,000–15,000+ ש\"ח",
         soon: "בקרוב",
@@ -532,10 +532,12 @@
     if (chatTitle) chatTitle.textContent = content.chatTitle;
     const comingSoon = document.querySelector(".pricing-card__coming-soon");
     if (comingSoon) comingSoon.textContent = content.soon;
-    const taglines = document.querySelectorAll(".pricing-card__tagline");
-    if (taglines[0]) taglines[0].textContent = content.basicPrice;
-    if (taglines[1]) taglines[1].textContent = content.proPrice;
-    if (taglines[2]) taglines[2].textContent = content.premiumPrice;
+    document.querySelectorAll("#services [data-he][data-en]").forEach((el) => {
+      const value = nextLang === "en" ? el.getAttribute("data-en") : el.getAttribute("data-he");
+      if (value != null) el.textContent = value;
+    });
+    const premiumTagline = document.querySelector(".pricing-card--enterprise .pricing-card__tagline");
+    if (premiumTagline) premiumTagline.textContent = content.premiumPrice;
 
     const labels = document.querySelectorAll(".contact-modal__label");
     if (labels[0] && labels[0].firstChild) labels[0].firstChild.textContent = `${content.labelName} `;
