@@ -2,6 +2,8 @@
 
   const BENEFITS_KEY = "site-hero-benefits";
   const THEME_KEY = "site-theme-mode";
+  const PHONE_DISPLAY = "058-612-2187";
+  const PHONE_HREF = "tel:+972586122187";
 
   const doc = document.documentElement;
   let currentLang = "he";
@@ -57,12 +59,22 @@
         homeAria: "Home page",
         navAria: "Main navigation",
         navServices: "Services",
+        navTrust: "Benefits",
+        navGallery: "Projects",
+        navReviews: "Reviews",
+        navFaq: "FAQ",
+        navQuote: "Get a quote",
         navContact: "Contact",
+        heroHeadline: "Professional Website for Your Business — More Leads and Clients",
+        heroOffer: "Free digital presence check for your business",
+        promoEnded: "Offer ended for this month",
+        heroWaCta: "Get a quote on WhatsApp",
+        heroAuditCta: "Free digital presence check",
         heroLead: "We support",
         heroPrefix: "",
         heroGrowth: "Growth",
         heroGrowthRest: "for your business",
-        heroSub: "A great small site creates a big business change.",
+        heroSub: "Free digital presence check for your business",
         heroCta: "Project Estimate",
         contactCloseAria: "Close contact window",
         contactTitle: "Contact Us",
@@ -108,8 +120,8 @@
         premiumDesc2: "<strong>Who is it for?</strong><br />Businesses that want to sell online and scale 24/7.",
         want: "I want this!",
         consult: "<strong>For a consultation and full package details</strong> - we're waiting for your call (:",
-        galleryTitle: "Gallery",
-        gallerySub: "A few of our projects....",
+        galleryTitle: "Projects We Built",
+        gallerySub: "Real website examples for businesses in Israel",
         galleryAAria: "Open DARION project in a new tab",
         galleryBAria: "Open Roomie project in a new tab",
         galleryCAria: "Open lawyer website project in a new tab",
@@ -120,8 +132,8 @@
         galleryAltC: "Lawyer website project",
         galleryAltD: "Brew Haven coffee shop website project",
         galleryAltE: "Calmy travel website project",
-        testimonialsTitle: "3 Big Advantages of Working With Us",
-        testimonialsSub: "What you get when building your site with PICASOW",
+        testimonialsTitle: "Client Testimonials",
+        testimonialsSub: "What clients say about working with us",
         reviewsTitle: "Excited Client Reactions",
         reviewsSub: "What real clients shared after getting their new website",
         miniAria: "Price notice",
@@ -129,7 +141,7 @@
         policy: "Accessibility & Policy",
         languageBtn: "עב",
         a11yFabAria: "Open accessibility tools",
-        chatFabAria: "Open WhatsApp",
+        chatFabAria: "Send a WhatsApp message",
         chatCloseAria: "Close chat window",
         botAlt: "Picasow support bot",
         chatTitle: "How can I help you today?",
@@ -223,6 +235,7 @@
         statusReset: "All accessibility settings were reset.",
         growthOn: "Hide company benefits around the headline",
         growthOff: "Show company benefits around the headline",
+        clickHere: "Click here",
         benefits: [
           "Short and precise sprints",
           "Unique designs",
@@ -245,12 +258,22 @@
         homeAria: "דף הבית",
         navAria: "ניווט ראשי",
         navServices: "שירותים",
+        navTrust: "יתרונות",
+        navGallery: "פרויקטים",
+        navReviews: "המלצות",
+        navFaq: "שאלות",
+        navQuote: "הצעת מחיר",
         navContact: "צור קשר",
+        heroHeadline: "בניית אתר מקצועי לעסק שלך — לקבלת יותר פניות ולקוחות",
+        heroOffer: "בדיקת נוכחות דיגיטלית חינם לעסק שלך",
+        promoEnded: "המבצע הסתיים לחודש זה",
+        heroWaCta: "לקבלת הצעת מחיר בוואטסאפ",
+        heroAuditCta: "בדיקת נוכחות דיגיטלית חינם",
         heroLead: "אנחנו תומכים",
         heroPrefix: "ב",
         heroGrowth: "צמיחה",
         heroGrowthRest: "של העסק שלך",
-        heroSub: "אתר קטן טוב – שינוי גדול לעסק שלך.",
+        heroSub: "בדיקת נוכחות דיגיטלית חינם לעסק שלך",
         heroCta: "הערכת הפרויקט",
         contactCloseAria: "סגירת חלון יצירת קשר",
         contactTitle: "דברו איתנו",
@@ -296,8 +319,8 @@
         premiumDesc2: "<strong>למי זה מתאים?</strong><br />לעסקים שרוצים למכור אונליין, להגדיל הכנסות ולעבוד בצורה אוטומטית 24/7.",
         want: "אני רוצה!",
         consult: "<strong>לשיחת ייעוץ וקבלת פרטים על כל חבילה</strong> - מחכים לך בטלפון (:",
-        galleryTitle: "גלריה",
-        gallerySub: "קצת מהפרוייקטים שלנו....",
+        galleryTitle: "פרויקטים שבנינו",
+        gallerySub: "דוגמאות לאתרים אמיתיים לעסקים בישראל",
         galleryAAria: "פתיחת פרויקט DARION בחלון חדש",
         galleryBAria: "פתיחת פרויקט Roomie בחלון חדש",
         galleryCAria: "פתיחת פרויקט אתר לעורך דין בחלון חדש",
@@ -308,8 +331,8 @@
         galleryAltC: "פרויקט אתר לעורך דין",
         galleryAltD: "פרויקט אתר בית קפה Brew Haven",
         galleryAltE: "פרויקט אתר נסיעות Calmy",
-        testimonialsTitle: "3 יתרונות גדולים של העבודה איתנו",
-        testimonialsSub: "מה תקבלו כשבונים אתר עם PICASOW",
+        testimonialsTitle: "המלצות מלקוחות",
+        testimonialsSub: "מה לקוחות אומרים על העבודה איתנו",
         reviewsTitle: "תגובות של התלהבות",
         reviewsSub: "מה שאנשים אמיתיים סיפרו אחרי שקיבלו אתר חדש",
         miniAria: "הערת מחיר",
@@ -317,7 +340,7 @@
         policy: "תקנון ומדיניות",
         languageBtn: "EN",
         a11yFabAria: "פתיחת כלי נגישות",
-        chatFabAria: "פתיחת וואטסאפ",
+        chatFabAria: "שליחת הודעה בוואטסאפ",
         chatCloseAria: "סגירת חלונית צ'אט",
         botAlt: "בוט התמיכה של Picasow",
         chatTitle: "איך אוכל לעזור לך היום?",
@@ -411,6 +434,7 @@
         statusReset: "כל הגדרות הנגישות אופסו.",
         growthOn: "הסתרת יתרונות החברה סביב הכותרת",
         growthOff: "הצגת יתרונות החברה סביב הכותרת",
+        clickHere: "לחץ כאן",
         benefits: [
           "ספרינטים קצרים ומדויקים",
           "עיצובים יחודיים",
@@ -437,8 +461,20 @@
     const nav = document.querySelector(".hero__nav");
     if (nav) nav.setAttribute("aria-label", content.navAria);
     const navLinks = document.querySelectorAll(".hero__nav a");
-    if (navLinks[0]) navLinks[0].textContent = content.navServices;
-    if (navLinks[1]) navLinks[1].textContent = content.navContact;
+    if (navLinks[0]) navLinks[0].textContent = content.navTrust || "יתרונות";
+    if (navLinks[1]) navLinks[1].textContent = content.navGallery;
+    if (navLinks[2]) navLinks[2].textContent = content.navReviews;
+    if (navLinks[3]) navLinks[3].textContent = content.navFaq || "שאלות";
+    if (navLinks[4]) navLinks[4].textContent = content.navQuote;
+
+    const heroPrimary = document.querySelector(".hero__headline--primary");
+    if (heroPrimary) heroPrimary.textContent = content.heroHeadline;
+    const heroOffer = document.querySelector(".hero__offer");
+    if (heroOffer) heroOffer.textContent = content.heroOffer || content.heroSub;
+    const heroWaText = document.querySelector(".hero__btn--wa-hero .hero__btn-text");
+    if (heroWaText) heroWaText.textContent = content.heroWaCta;
+    const heroAuditBtn = document.querySelector(".hero__cta-secondary .hero__btn--quote");
+    if (heroAuditBtn) heroAuditBtn.textContent = content.heroAuditCta;
     const brandText = document.getElementById("brandText");
     if (brandText) brandText.textContent = nextLang === "en" ? "PICASOW" : "\u05e4\u05d9\u05e7\u05d0\u05e1\u05d5";
 
@@ -451,10 +487,35 @@
     const growthPrefix = document.querySelector(".hero__bet");
     if (growthPrefix) growthPrefix.textContent = content.heroPrefix;
 
-    const heroSub = document.querySelector(".hero__sub");
+    const heroSub = document.querySelector(".hero__sub:not(.hero__offer)");
     if (heroSub) heroSub.textContent = content.heroSub;
-    const heroCta = document.querySelector(".hero__btn-primary");
+    const heroCta = document.querySelector(".hero__btn-primary:not(.hero__btn-primary--ghost)");
     if (heroCta) heroCta.textContent = content.heroCta;
+    const heroCtaGhost = document.querySelector(".hero__btn-primary--ghost");
+    if (heroCtaGhost) heroCtaGhost.textContent = content.heroCta;
+
+    document.querySelectorAll("#trust [data-he][data-en], #faq [data-he][data-en], .hero-portfolio [data-he][data-en], .hero-promo [data-he][data-en], .hero__click-hint-label[data-he][data-en], .hero__cta-row [data-he][data-en], .section-leads [data-he][data-en], .chat-fab__label[data-he][data-en], #gallery .section-header [data-he][data-en]").forEach((el) => {
+      const value = nextLang === "en" ? el.getAttribute("data-en") : el.getAttribute("data-he");
+      if (value != null) el.textContent = value;
+    });
+
+    document.querySelectorAll(".hero__btn--phone").forEach((link) => {
+      link.setAttribute("aria-label", nextLang === "en" ? `Call ${PHONE_DISPLAY}` : `התקשרו ל־${PHONE_DISPLAY}`);
+    });
+
+    document.querySelectorAll("[data-wa-he][data-wa-en]").forEach((el) => {
+      const href = nextLang === "en" ? el.getAttribute("data-wa-en") : el.getAttribute("data-wa-he");
+      if (href) {
+        el.setAttribute("href", href);
+        if (el.tagName === "A" && !el.getAttribute("target")) {
+          el.setAttribute("target", "_blank");
+          el.setAttribute("rel", "noopener noreferrer");
+        }
+      }
+    });
+    updatePromoCountdown({
+      promoEnded: nextLang === "en" ? "Offer ended for this month" : "המבצע הסתיים לחודש זה",
+    });
     const contactTitle = document.getElementById("contactTitle");
     if (contactTitle) contactTitle.textContent = content.contactTitle;
     const contactClose = document.querySelector(".contact-modal__close");
@@ -725,15 +786,11 @@
   const languageToggle = document.getElementById("languageToggle");
 
   if (toggle) {
-
-    toggle.addEventListener("click", () => {
-
+    toggle.addEventListener("click", (event) => {
+      event.stopPropagation();
       const active = doc.getAttribute("data-benefits") === "true";
-
       applyBenefits(!active);
-
     });
-
   }
 
   if (themeToggle) {
@@ -751,8 +808,117 @@
 
 
 
+  function getPromoMonthEnd() {
+    const now = new Date();
+    return new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59, 999);
+  }
+
+  function padCountdown(value) {
+    return String(Math.max(0, value)).padStart(2, "0");
+  }
+
+  function updatePromoCountdown(contentOverride) {
+    const root = document.getElementById("heroPromoCountdown");
+    if (!root) return;
+    const content = contentOverride || (currentLang === "en" ? { promoEnded: "Offer ended for this month" } : { promoEnded: "המבצע הסתיים לחודש זה" });
+    const label = root.querySelector(".hero-promo__timer-label");
+    const unitEls = {
+      days: root.querySelector('[data-promo-unit="days"]'),
+      hours: root.querySelector('[data-promo-unit="hours"]'),
+      minutes: root.querySelector('[data-promo-unit="minutes"]'),
+      seconds: root.querySelector('[data-promo-unit="seconds"]'),
+    };
+    const remainingMs = getPromoMonthEnd().getTime() - Date.now();
+
+    if (remainingMs <= 0) {
+      root.classList.add("is-ended");
+      if (label) label.textContent = content.promoEnded || "המבצע הסתיים לחודש זה";
+      return;
+    }
+
+    root.classList.remove("is-ended");
+    if (label) {
+      const labelText = currentLang === "en" ? label.getAttribute("data-en") : label.getAttribute("data-he");
+      if (labelText) label.textContent = labelText;
+    }
+
+    const totalSeconds = Math.floor(remainingMs / 1000);
+    const days = Math.floor(totalSeconds / 86400);
+    const hours = Math.floor((totalSeconds % 86400) / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    if (unitEls.days) unitEls.days.textContent = padCountdown(days);
+    if (unitEls.hours) unitEls.hours.textContent = padCountdown(hours);
+    if (unitEls.minutes) unitEls.minutes.textContent = padCountdown(minutes);
+    if (unitEls.seconds) unitEls.seconds.textContent = padCountdown(seconds);
+  }
+
+  function initPromoCountdown() {
+    updatePromoCountdown();
+    window.setInterval(() => updatePromoCountdown(), 1000);
+  }
+
+  function dialPhone() {
+    window.location.href = PHONE_HREF;
+  }
+
+  function initLeadButtons() {
+    document.querySelectorAll('a[href="#contact"]').forEach((link) => {
+      link.addEventListener("click", (event) => {
+        const target = document.getElementById("contact");
+        if (!target) return;
+        event.preventDefault();
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+        const firstField = document.getElementById("quoteName");
+        if (firstField) {
+          window.setTimeout(() => firstField.focus({ preventScroll: true }), 450);
+        }
+      });
+    });
+
+    document.querySelectorAll(".hero__btn--phone").forEach((link) => {
+      link.setAttribute("href", PHONE_HREF);
+      link.setAttribute("aria-label", currentLang === "en" ? `Call ${PHONE_DISPLAY}` : `התקשרו ל־${PHONE_DISPLAY}`);
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        dialPhone();
+      });
+    });
+
+    document.querySelectorAll("a[href^='tel:']:not(.hero__btn--phone)").forEach((link) => {
+      link.setAttribute("href", PHONE_HREF);
+    });
+
+    function openExternalUrl(url) {
+      if (!url) return;
+      const opened = window.open(url, "_blank", "noopener,noreferrer");
+      if (!opened) window.location.href = url;
+    }
+
+    document.querySelectorAll(".hero__btn--wa, [data-wa-he][data-wa-en]").forEach((link) => {
+      if (link.tagName !== "A") return;
+      if (!link.getAttribute("target")) {
+        link.setAttribute("target", "_blank");
+        link.setAttribute("rel", "noopener noreferrer");
+      }
+      link.addEventListener("click", (event) => {
+        const href =
+          (currentLang === "en" ? link.getAttribute("data-wa-en") : link.getAttribute("data-wa-he")) ||
+          link.getAttribute("href");
+        if (!href || !href.includes("wa.me")) return;
+        if (location.protocol === "file:") {
+          event.preventDefault();
+          openExternalUrl(href);
+        }
+      });
+    });
+  }
+
   applyLanguage("he");
   initBenefits();
+  initPromoCountdown();
+  initLeadButtons();
   applyTheme(getStoredTheme() === "dark" ? "dark" : "light");
 
   const contactModal = document.getElementById("contactModal");
@@ -823,7 +989,7 @@
   }
 
   const chatTrigger = document.getElementById("chatTrigger");
-  if (chatTrigger) {
+  if (chatTrigger && chatTrigger.tagName === "BUTTON") {
     chatTrigger.addEventListener("click", () => {
       const text = encodeURIComponent(
         currentLang === "en" ? "Hi, I want to get more details." : "שלום, אני רוצה לקבל פרטים נוספים."
@@ -1007,7 +1173,7 @@
 
   const cardEls = document.querySelectorAll("[data-card]");
   const scrollPopEls = document.querySelectorAll(
-    ".hero__eyebrow, .hero__sub, .hero__cta-row, .section-header, .gallery-item, .guarantee, .mini-game, .mini-game__head"
+    ".hero__eyebrow, .hero__sub, .hero-promo, .hero__cta-row, .hero-portfolio, .section-header, .gallery-item, .guarantee, .trust-grid, .section-leads, .faq-list, .mini-game, .mini-game__head"
   );
 
   const cursorDot = document.getElementById("cursorDot");
