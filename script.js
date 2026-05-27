@@ -127,11 +127,13 @@
         galleryCAria: "Open lawyer website project in a new tab",
         galleryDAria: "Open Brew Haven coffee shop website project in a new tab",
         galleryEAria: "Open Calmy travel website project in a new tab",
+        galleryFAria: "Open BASIC travel website project in a new tab",
         galleryAltA: "DARION website design project",
         galleryAltB: "Roomie product showcase website project",
         galleryAltC: "Lawyer website project",
         galleryAltD: "Brew Haven coffee shop website project",
         galleryAltE: "Calmy travel website project",
+        galleryAltF: "BASIC travel website project",
         testimonialsTitle: "Client Testimonials",
         testimonialsSub: "What clients say about working with us",
         reviewsTitle: "Excited Client Reactions",
@@ -326,11 +328,13 @@
         galleryCAria: "פתיחת פרויקט אתר לעורך דין בחלון חדש",
         galleryDAria: "פתיחת פרויקט אתר בית קפה Brew Haven בחלון חדש",
         galleryEAria: "פתיחת פרויקט אתר נסיעות Calmy בחלון חדש",
+        galleryFAria: "פתיחת פרויקט אתר נסיעות BASIC בחלון חדש",
         galleryAltA: "פרויקט עיצוב אתר DARION",
         galleryAltB: "פרויקט אתר Roomie לתצוגת מוצר",
         galleryAltC: "פרויקט אתר לעורך דין",
         galleryAltD: "פרויקט אתר בית קפה Brew Haven",
         galleryAltE: "פרויקט אתר נסיעות Calmy",
+        galleryAltF: "פרויקט אתר נסיעות BASIC",
         testimonialsTitle: "המלצות מלקוחות",
         testimonialsSub: "מה לקוחות אומרים על העבודה איתנו",
         reviewsTitle: "תגובות של התלהבות",
@@ -535,21 +539,25 @@
     const galleryC = document.querySelector(".gallery-item--c");
     const galleryD = document.querySelector(".gallery-item--d");
     const galleryE = document.querySelector(".gallery-item--e");
+    const galleryF = document.querySelector(".gallery-item--f");
     if (galleryA) galleryA.setAttribute("aria-label", content.galleryAAria);
     if (galleryB) galleryB.setAttribute("aria-label", content.galleryBAria);
     if (galleryC) galleryC.setAttribute("aria-label", content.galleryCAria);
     if (galleryD) galleryD.setAttribute("aria-label", content.galleryDAria);
     if (galleryE) galleryE.setAttribute("aria-label", content.galleryEAria);
+    if (galleryF) galleryF.setAttribute("aria-label", content.galleryFAria);
     const galleryAImg = document.querySelector(".gallery-item--a img");
     const galleryBImg = document.querySelector(".gallery-item--b img");
     const galleryCImg = document.querySelector(".gallery-item--c img");
     const galleryDImg = document.querySelector(".gallery-item--d img");
     const galleryEImg = document.querySelector(".gallery-item--e img");
+    const galleryFImg = document.querySelector(".gallery-item--f img");
     if (galleryAImg) galleryAImg.alt = content.galleryAltA;
     if (galleryBImg) galleryBImg.alt = content.galleryAltB;
     if (galleryCImg) galleryCImg.alt = content.galleryAltC;
     if (galleryDImg) galleryDImg.alt = content.galleryAltD;
     if (galleryEImg) galleryEImg.alt = content.galleryAltE;
+    if (galleryFImg) galleryFImg.alt = content.galleryAltF;
     const testimonialsHeading = document.getElementById("testimonials-heading");
     if (testimonialsHeading) testimonialsHeading.textContent = content.testimonialsTitle;
     const testimonialsSub = document.querySelector(".section--testimonials .section-header__sub");
