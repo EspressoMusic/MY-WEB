@@ -6,7 +6,7 @@
   const PHONE_HREF = "tel:+972586122187";
 
   const doc = document.documentElement;
-  let currentLang = "he";
+  let currentLang = "en";
 
   function getStoredTheme() {
     try {
@@ -808,12 +808,6 @@
     });
   }
 
-  if (languageToggle) {
-    languageToggle.addEventListener("click", () => {
-      applyLanguage(currentLang === "he" ? "en" : "he");
-    });
-  }
-
 
 
   function getPromoMonthEnd() {
@@ -877,6 +871,9 @@
         const target = document.getElementById("contact");
         if (!target) return;
         event.preventDefault();
+        if (window.location.hash !== "#contact") {
+          history.replaceState(null, "", "#contact");
+        }
         target.scrollIntoView({ behavior: "smooth", block: "start" });
         const firstField = document.getElementById("quoteName");
         if (firstField) {
@@ -923,9 +920,8 @@
     });
   }
 
-  applyLanguage("he");
+  applyLanguage("en");
   initBenefits();
-  initPromoCountdown();
   initLeadButtons();
   applyTheme(getStoredTheme() === "dark" ? "dark" : "light");
 
@@ -1181,7 +1177,7 @@
 
   const cardEls = document.querySelectorAll("[data-card]");
   const scrollPopEls = document.querySelectorAll(
-    ".hero__eyebrow, .hero__sub, .hero-promo, .hero__cta-row, .hero-portfolio, .section-header, .gallery-item, .guarantee, .trust-grid, .section-leads, .faq-list, .mini-game, .mini-game__head"
+    ".hero__eyebrow, .hero__sub, .hero-portfolio, .section-header, .gallery-item, .guarantee, .trust-grid, .section-leads, .faq-list, .mini-game, .mini-game__head"
   );
 
   const cursorDot = document.getElementById("cursorDot");
@@ -1330,9 +1326,10 @@
   }
 
   applyQuoteLang(currentLang);
-  const quoteLangBtn = document.getElementById("languageToggle");
-  if (quoteLangBtn) {
-    quoteLangBtn.addEventListener("click", () => {
+
+  if (languageToggle) {
+    languageToggle.addEventListener("click", () => {
+      applyLanguage(currentLang === "he" ? "en" : "he");
       applyQuoteLang(currentLang);
     });
   }
