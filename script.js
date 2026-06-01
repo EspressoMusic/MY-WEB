@@ -1225,7 +1225,7 @@
 
   const cursorDot = document.getElementById("cursorDot");
   const clickableSelector =
-    "a, button, [role='button'], input[type='button'], input[type='submit'], .btn, .growth-toggle, .hero-benefit, summary";
+    "a, button, [role='button'], input[type='button'], input[type='submit'], .btn, .growth-toggle, summary";
 
   document.addEventListener("click", (event) => {
     const trigger = event.target.closest(".pricing-card__accordion-trigger");
@@ -1465,10 +1465,20 @@
     window.location.href = SUCCESS_PAGE_URL + suffix;
   }
 
-  function fireCarePlansConfetti(container) {
-    if (!container || container.dataset.fired === "true") return;
+  function spawnConfetti(container, options = {}) {
+    if (!container) return;
+    const once = options.once === true;
+    if (once && container.dataset.fired === "true") return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    container.dataset.fired = "true";
+    if (once) container.dataset.fired = "true";
+
+    const variant =
+      options.variant ||
+      (container.classList.contains("confetti--note")
+        ? "note"
+        : container.classList.contains("confetti--card")
+          ? "card"
+          : "full");
     const colors = [
       "#facc15",
       "#f59e0b",
@@ -1480,15 +1490,17 @@
       "#ef4444",
       "#8b5cf6",
     ];
+    const pieceCount = variant === "note" ? 26 : variant === "card" ? 36 : 72;
+    const drift = variant === "note" ? 18 : variant === "card" ? 28 : 120;
+    const clearMs = variant === "note" ? 3200 : 4500;
+
+    container.innerHTML = "";
     const frag = document.createDocumentFragment();
-    const isCardConfetti = container.classList.contains("confetti--card");
-    const pieceCount = isCardConfetti ? 36 : 72;
     for (let i = 0; i < pieceCount; i++) {
       const piece = document.createElement("span");
       piece.className = "confetti__piece";
       piece.style.left = Math.random() * 100 + "%";
       piece.style.background = colors[i % colors.length];
-      const drift = isCardConfetti ? 28 : 120;
       piece.style.setProperty("--confetti-x", Math.random() * drift - drift / 2 + "px");
       piece.style.setProperty("--confetti-rot", Math.random() * 720 - 360 + "deg");
       piece.style.setProperty("--confetti-duration", 2.2 + Math.random() * 1.6 + "s");
@@ -1500,7 +1512,27 @@
     container.appendChild(frag);
     window.setTimeout(() => {
       container.innerHTML = "";
-    }, 4500);
+    }, clearMs);
+  }
+
+  function fireCarePlansConfetti(container) {
+    spawnConfetti(container, { once: true, variant: "card" });
+  }
+
+  if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    document.querySelectorAll(".hero-benefit").forEach((note) => {
+      let confetti = note.querySelector(".confetti--note");
+      if (!confetti) {
+        confetti = document.createElement("span");
+        confetti.className = "confetti confetti--note";
+        confetti.setAttribute("aria-hidden", "true");
+        note.prepend(confetti);
+      }
+      note.addEventListener("mouseenter", () => {
+        if (doc.getAttribute("data-benefits") !== "true") return;
+        spawnConfetti(confetti, { variant: "note" });
+      });
+    });
   }
 
   const professionalCareCard = document.getElementById("professionalCareCard");
