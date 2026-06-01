@@ -2,11 +2,102 @@
 
   const BENEFITS_KEY = "site-hero-benefits";
   const THEME_KEY = "site-theme-mode";
+  const LANG_PREF_KEY = "picasow_lang_pref";
+  const PRICING_KEY = "picasow_pricing";
   const PHONE_DISPLAY = "058-612-2187";
   const PHONE_HREF = "tel:+972586122187";
 
   const doc = document.documentElement;
   let currentLang = "he";
+  let currentPricing = "il";
+
+  function getStoredLangPref() {
+    try {
+      const value = localStorage.getItem(LANG_PREF_KEY);
+      return value === "en" || value === "he" ? value : null;
+    } catch {
+      return null;
+    }
+  }
+
+  function setStoredLangPref(lang) {
+    try {
+      localStorage.setItem(LANG_PREF_KEY, lang === "en" ? "en" : "he");
+    } catch {
+      /* ignore */
+    }
+  }
+
+  function getStoredPricingPref() {
+    try {
+      const value = localStorage.getItem(PRICING_KEY);
+      return value === "intl" ? "intl" : "il";
+    } catch {
+      return "il";
+    }
+  }
+
+  function setStoredPricingPref(mode) {
+    try {
+      localStorage.setItem(PRICING_KEY, mode === "intl" ? "intl" : "il");
+    } catch {
+      /* ignore */
+    }
+  }
+
+  function setPricingMode(mode, options = {}) {
+    const persist = options.persist !== false;
+    currentPricing = mode === "intl" ? "intl" : "il";
+    doc.setAttribute("data-pricing", currentPricing);
+    if (persist) setStoredPricingPref(currentPricing);
+  }
+
+  async function detectVisitorCountry() {
+    try {
+      const controller = new AbortController();
+      const timeoutId = window.setTimeout(() => controller.abort(), 5000);
+      const response = await fetch("https://get.geojs.io/v1/ip/country.json", {
+        signal: controller.signal,
+      });
+      window.clearTimeout(timeoutId);
+      if (!response.ok) return null;
+      const data = await response.json();
+      return typeof data.country === "string" ? data.country.toUpperCase() : null;
+    } catch {
+      return null;
+    }
+  }
+
+  function isNonHebrewBrowserLanguage() {
+    const languages = navigator.languages?.length ? navigator.languages : [navigator.language];
+    return languages.some((tag) => {
+      const code = String(tag || "").toLowerCase();
+      return code && !code.startsWith("he") && code !== "iw";
+    });
+  }
+
+  function getMoneyAttr(lang, pricingMode) {
+    if (lang === "en" && pricingMode === "intl") return "data-intl";
+    if (lang === "en") return "data-en";
+    return "data-he";
+  }
+
+  function applyPricingToCards(lang, pricingMode) {
+    const moneyAttr = getMoneyAttr(lang, pricingMode);
+    const langAttr = lang === "en" ? "data-en" : "data-he";
+
+    document.querySelectorAll("#services [data-intl], #faq .faq-item p[data-intl]").forEach((el) => {
+      const value = el.getAttribute(moneyAttr);
+      if (value != null) el.textContent = value;
+    });
+
+    document
+      .querySelectorAll("#services .pricing-card__price-title, #services .pricing-card__price-period")
+      .forEach((el) => {
+        const value = el.getAttribute(langAttr);
+        if (value != null) el.textContent = value;
+      });
+  }
 
   function getStoredTheme() {
     try {
@@ -45,9 +136,18 @@
     syncThemeToggle(theme);
   }
 
-  function applyLanguage(lang) {
+  function applyLanguage(lang, options = {}) {
     const nextLang = lang === "en" ? "en" : "he";
+    if (options.pricing != null) {
+      setPricingMode(options.pricing);
+    } else if (nextLang === "he") {
+      setPricingMode("il", { persist: false });
+    } else {
+      setPricingMode("intl");
+    }
+
     currentLang = nextLang;
+    setStoredLangPref(nextLang);
     doc.setAttribute("data-lang", nextLang);
     doc.setAttribute("lang", nextLang);
     doc.setAttribute("dir", nextLang === "en" ? "ltr" : "rtl");
@@ -66,15 +166,11 @@
         navQuote: "Get a quote",
         navContact: "Contact",
         heroHeadline: "Professional Website for Your Business — More Leads and Clients",
-        heroOffer: "Free digital presence check for your business",
-        promoEnded: "Offer ended for this month",
         heroWaCta: "Get a quote on WhatsApp",
-        heroAuditCta: "Free digital presence check",
         heroLead: "We support",
         heroPrefix: "",
         heroGrowth: "Growth",
         heroGrowthRest: "for your business",
-        heroSub: "Free digital presence check for your business",
         heroCta: "Project Estimate",
         contactCloseAria: "Close contact window",
         contactTitle: "Contact Us",
@@ -93,8 +189,6 @@
         premiumPrice: "8,000-15,000+ ILS",
         soon: "COMING SOON",
         basicDesc1: `
-          <p>Includes first year of hosting and domain as a <strong>free gift</strong>.</p>
-          <p>From the second year: only 790 ILS per year.</p>
           <div class="pricing-card__accordion">
             <button type="button" class="pricing-card__accordion-trigger" aria-expanded="false"><strong>What is it and who is it for?</strong></button>
             <div class="pricing-card__accordion-content" aria-hidden="true">
@@ -105,8 +199,6 @@
         `,
         basicDesc2: "",
         proDesc1: `
-          <p>Includes first year of hosting and domain as a <strong>free gift</strong>.</p>
-          <p>From the second year: only 990 ILS per year.</p>
           <div class="pricing-card__accordion">
             <button type="button" class="pricing-card__accordion-trigger" aria-expanded="false"><strong>What is it and who is it for?</strong></button>
             <div class="pricing-card__accordion-content" aria-hidden="true">
@@ -267,15 +359,11 @@
         navQuote: "הצעת מחיר",
         navContact: "צור קשר",
         heroHeadline: "בניית אתר מקצועי לעסק שלך — לקבלת יותר פניות ולקוחות",
-        heroOffer: "בדיקת נוכחות דיגיטלית חינם לעסק שלך",
-        promoEnded: "המבצע הסתיים לחודש זה",
         heroWaCta: "לקבלת הצעת מחיר בוואטסאפ",
-        heroAuditCta: "בדיקת נוכחות דיגיטלית חינם",
         heroLead: "אנחנו תומכים",
         heroPrefix: "ב",
         heroGrowth: "צמיחה",
         heroGrowthRest: "של העסק שלך",
-        heroSub: "בדיקת נוכחות דיגיטלית חינם לעסק שלך",
         heroCta: "הערכת הפרויקט",
         contactCloseAria: "סגירת חלון יצירת קשר",
         contactTitle: "דברו איתנו",
@@ -294,8 +382,6 @@
         premiumPrice: "8,000–15,000+ ש\"ח",
         soon: "בקרוב",
         basicDesc1: `
-          <p>כולל שנה ראשונה של אחסון ודומיין <strong>במתנה</strong>.</p>
-          <p>מהשנה השנייה: 790 ₪ לשנה בלבד.</p>
           <div class="pricing-card__accordion">
             <button type="button" class="pricing-card__accordion-trigger" aria-expanded="false"><strong>מה זה ולמי זה מתאים?</strong></button>
             <div class="pricing-card__accordion-content" aria-hidden="true">
@@ -306,8 +392,6 @@
         `,
         basicDesc2: "",
         proDesc1: `
-          <p>כולל שנה ראשונה של אחסון ודומיין <strong>במתנה</strong>.</p>
-          <p>מהשנה השנייה: 990 ₪ לשנה בלבד.</p>
           <div class="pricing-card__accordion">
             <button type="button" class="pricing-card__accordion-trigger" aria-expanded="false"><strong>מה זה ולמי זה מתאים?</strong></button>
             <div class="pricing-card__accordion-content" aria-hidden="true">
@@ -465,20 +549,13 @@
     const nav = document.querySelector(".hero__nav");
     if (nav) nav.setAttribute("aria-label", content.navAria);
     const navLinks = document.querySelectorAll(".hero__nav a");
-    if (navLinks[0]) navLinks[0].textContent = content.navTrust || "יתרונות";
-    if (navLinks[1]) navLinks[1].textContent = content.navGallery;
-    if (navLinks[2]) navLinks[2].textContent = content.navReviews;
-    if (navLinks[3]) navLinks[3].textContent = content.navFaq || "שאלות";
-    if (navLinks[4]) navLinks[4].textContent = content.navQuote;
+    if (navLinks[0]) navLinks[0].textContent = content.navGallery;
+    if (navLinks[1]) navLinks[1].textContent = content.navReviews;
+    if (navLinks[2]) navLinks[2].textContent = content.navFaq || "שאלות";
+    if (navLinks[3]) navLinks[3].textContent = content.navQuote;
 
     const heroPrimary = document.querySelector(".hero__headline--primary");
     if (heroPrimary) heroPrimary.textContent = content.heroHeadline;
-    const heroOffer = document.querySelector(".hero__offer");
-    if (heroOffer) heroOffer.textContent = content.heroOffer || content.heroSub;
-    const heroWaText = document.querySelector(".hero__btn--wa-hero .hero__btn-text");
-    if (heroWaText) heroWaText.textContent = content.heroWaCta;
-    const heroAuditBtn = document.querySelector(".hero__cta-secondary .hero__btn--quote");
-    if (heroAuditBtn) heroAuditBtn.textContent = content.heroAuditCta;
     const brandText = document.getElementById("brandText");
     if (brandText) brandText.textContent = nextLang === "en" ? "PICASOW" : "\u05e4\u05d9\u05e7\u05d0\u05e1\u05d5";
 
@@ -491,14 +568,12 @@
     const growthPrefix = document.querySelector(".hero__bet");
     if (growthPrefix) growthPrefix.textContent = content.heroPrefix;
 
-    const heroSub = document.querySelector(".hero__sub:not(.hero__offer)");
-    if (heroSub) heroSub.textContent = content.heroSub;
     const heroCta = document.querySelector(".hero__btn-primary:not(.hero__btn-primary--ghost)");
     if (heroCta) heroCta.textContent = content.heroCta;
     const heroCtaGhost = document.querySelector(".hero__btn-primary--ghost");
     if (heroCtaGhost) heroCtaGhost.textContent = content.heroCta;
 
-    document.querySelectorAll("#trust [data-he][data-en], #faq [data-he][data-en], .hero-portfolio [data-he][data-en], .hero-promo [data-he][data-en], .hero__click-hint-label[data-he][data-en], .hero__cta-row [data-he][data-en], .section-leads [data-he][data-en], .chat-fab__label[data-he][data-en], #gallery .section-header [data-he][data-en]").forEach((el) => {
+    document.querySelectorAll("#faq [data-he][data-en], .hero__click-hint-label[data-he][data-en], .chat-fab__label[data-he][data-en], #gallery .section-header [data-he][data-en]").forEach((el) => {
       const value = nextLang === "en" ? el.getAttribute("data-en") : el.getAttribute("data-he");
       if (value != null) el.textContent = value;
     });
@@ -516,9 +591,6 @@
           el.setAttribute("rel", "noopener noreferrer");
         }
       }
-    });
-    updatePromoCountdown({
-      promoEnded: nextLang === "en" ? "Offer ended for this month" : "המבצע הסתיים לחודש זה",
     });
     const contactTitle = document.getElementById("contactTitle");
     if (contactTitle) contactTitle.textContent = content.contactTitle;
@@ -601,13 +673,14 @@
     if (chatTitle) chatTitle.textContent = content.chatTitle;
     const comingSoon = document.querySelector(".pricing-card__coming-soon");
     if (comingSoon) comingSoon.textContent = content.soon;
-    document.querySelectorAll("#services [data-he][data-en]").forEach((el) => {
-      const value = nextLang === "en" ? el.getAttribute("data-en") : el.getAttribute("data-he");
-      if (value != null) el.textContent = value;
-    });
-    const premiumTagline = document.querySelector(".pricing-card--enterprise .pricing-card__tagline");
-    if (premiumTagline) premiumTagline.textContent = content.premiumPrice;
-
+    document
+      .querySelectorAll(
+        "#services [data-he][data-en]:not(.pricing-card__price-old):not(.pricing-card__price-title):not(.pricing-card__price-new):not(.pricing-card__price-period):not([data-intl])"
+      )
+      .forEach((el) => {
+        const value = nextLang === "en" ? el.getAttribute("data-en") : el.getAttribute("data-he");
+        if (value != null) el.textContent = value;
+      });
     const labels = document.querySelectorAll(".contact-modal__label");
     if (labels[0] && labels[0].firstChild) labels[0].firstChild.textContent = `${content.labelName} `;
     if (labels[1] && labels[1].firstChild) labels[1].firstChild.textContent = `${content.labelSubject} `;
@@ -640,13 +713,6 @@
       heroBenefitsRing.setAttribute("dir", nextLang === "en" ? "ltr" : "rtl");
     }
 
-    const guaranteeLink = document.querySelector(".guarantee__link");
-    if (guaranteeLink) {
-      guaranteeLink.innerHTML = content.consult;
-      guaranteeLink.href = nextLang === "en"
-        ? "https://wa.me/972586122187?text=Hello%2C%20I%20want%20a%20consultation."
-        : "https://wa.me/972586122187?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%94%D7%AA%D7%99%D7%99%D7%A2%D7%A5%20%D7%91%D7%A0%D7%95%D7%A9%D7%90";
-    }
     const a11yTitle = document.getElementById("a11yTitle");
     if (a11yTitle) a11yTitle.textContent = content.a11yTitle;
     const legalContentEl = document.getElementById("a11yLegalContent");
@@ -694,7 +760,38 @@
       benefitsToggle.setAttribute("aria-label", active ? content.growthOn : content.growthOff);
     }
 
+    applyPricingToCards(nextLang, currentPricing);
     syncThemeToggle(doc.getAttribute("data-theme") || "light");
+  }
+
+  async function initVisitorLocale() {
+    const params = new URLSearchParams(window.location.search);
+    const queryLang = params.get("lang");
+    if (queryLang === "en" || queryLang === "he") {
+      const queryPricing = params.get("pricing") === "intl" ? "intl" : "il";
+      applyLanguage(queryLang, { pricing: queryPricing });
+      return;
+    }
+
+    const storedLang = getStoredLangPref();
+    if (storedLang === "he") {
+      applyLanguage("he", { pricing: "il" });
+      return;
+    }
+    if (storedLang === "en") {
+      applyLanguage("en", { pricing: "intl" });
+      return;
+    }
+
+    const country = await detectVisitorCountry();
+    const isInternational = country ? country !== "IL" : isNonHebrewBrowserLanguage();
+
+    if (isInternational) {
+      applyLanguage("en", { pricing: "intl" });
+      return;
+    }
+
+    applyLanguage("he", { pricing: "il" });
   }
 
 
@@ -808,64 +905,8 @@
     });
   }
 
-  if (languageToggle) {
-    languageToggle.addEventListener("click", () => {
-      applyLanguage(currentLang === "he" ? "en" : "he");
-    });
-  }
 
 
-
-  function getPromoMonthEnd() {
-    const now = new Date();
-    return new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59, 999);
-  }
-
-  function padCountdown(value) {
-    return String(Math.max(0, value)).padStart(2, "0");
-  }
-
-  function updatePromoCountdown(contentOverride) {
-    const root = document.getElementById("heroPromoCountdown");
-    if (!root) return;
-    const content = contentOverride || (currentLang === "en" ? { promoEnded: "Offer ended for this month" } : { promoEnded: "המבצע הסתיים לחודש זה" });
-    const label = root.querySelector(".hero-promo__timer-label");
-    const unitEls = {
-      days: root.querySelector('[data-promo-unit="days"]'),
-      hours: root.querySelector('[data-promo-unit="hours"]'),
-      minutes: root.querySelector('[data-promo-unit="minutes"]'),
-      seconds: root.querySelector('[data-promo-unit="seconds"]'),
-    };
-    const remainingMs = getPromoMonthEnd().getTime() - Date.now();
-
-    if (remainingMs <= 0) {
-      root.classList.add("is-ended");
-      if (label) label.textContent = content.promoEnded || "המבצע הסתיים לחודש זה";
-      return;
-    }
-
-    root.classList.remove("is-ended");
-    if (label) {
-      const labelText = currentLang === "en" ? label.getAttribute("data-en") : label.getAttribute("data-he");
-      if (labelText) label.textContent = labelText;
-    }
-
-    const totalSeconds = Math.floor(remainingMs / 1000);
-    const days = Math.floor(totalSeconds / 86400);
-    const hours = Math.floor((totalSeconds % 86400) / 3600);
-    const minutes = Math.floor((totalSeconds % 3600) / 60);
-    const seconds = totalSeconds % 60;
-
-    if (unitEls.days) unitEls.days.textContent = padCountdown(days);
-    if (unitEls.hours) unitEls.hours.textContent = padCountdown(hours);
-    if (unitEls.minutes) unitEls.minutes.textContent = padCountdown(minutes);
-    if (unitEls.seconds) unitEls.seconds.textContent = padCountdown(seconds);
-  }
-
-  function initPromoCountdown() {
-    updatePromoCountdown();
-    window.setInterval(() => updatePromoCountdown(), 1000);
-  }
 
   function dialPhone() {
     window.location.href = PHONE_HREF;
@@ -923,9 +964,7 @@
     });
   }
 
-  applyLanguage("he");
   initBenefits();
-  initPromoCountdown();
   initLeadButtons();
   applyTheme(getStoredTheme() === "dark" ? "dark" : "light");
 
@@ -1181,7 +1220,7 @@
 
   const cardEls = document.querySelectorAll("[data-card]");
   const scrollPopEls = document.querySelectorAll(
-    ".hero__eyebrow, .hero__sub, .hero-promo, .hero__cta-row, .hero-portfolio, .section-header, .gallery-item, .guarantee, .trust-grid, .section-leads, .faq-list, .mini-game, .mini-game__head"
+    ".hero__eyebrow, .section-header, .gallery-item, .faq-list, .mini-game, .mini-game__head"
   );
 
   const cursorDot = document.getElementById("cursorDot");
@@ -1330,12 +1369,22 @@
   }
 
   applyQuoteLang(currentLang);
+
   const quoteLangBtn = document.getElementById("languageToggle");
   if (quoteLangBtn) {
     quoteLangBtn.addEventListener("click", () => {
+      if (currentLang === "he") {
+        applyLanguage("en");
+      } else {
+        applyLanguage("he");
+      }
       applyQuoteLang(currentLang);
     });
   }
+
+  initVisitorLocale().then(() => {
+    applyQuoteLang(currentLang);
+  });
 
   function setFieldError(field, hasError) {
     if (!field) return;
@@ -1414,6 +1463,62 @@
     } catch (_) { /* ignore */ }
     const suffix = success ? "" : "?error=1";
     window.location.href = SUCCESS_PAGE_URL + suffix;
+  }
+
+  function fireCarePlansConfetti(container) {
+    if (!container || container.dataset.fired === "true") return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    container.dataset.fired = "true";
+    const colors = [
+      "#facc15",
+      "#f59e0b",
+      "#fde047",
+      "#fcd34d",
+      "#d97706",
+      "#fffbeb",
+      "#22c55e",
+      "#ef4444",
+      "#8b5cf6",
+    ];
+    const frag = document.createDocumentFragment();
+    const isCardConfetti = container.classList.contains("confetti--card");
+    const pieceCount = isCardConfetti ? 36 : 72;
+    for (let i = 0; i < pieceCount; i++) {
+      const piece = document.createElement("span");
+      piece.className = "confetti__piece";
+      piece.style.left = Math.random() * 100 + "%";
+      piece.style.background = colors[i % colors.length];
+      const drift = isCardConfetti ? 28 : 120;
+      piece.style.setProperty("--confetti-x", Math.random() * drift - drift / 2 + "px");
+      piece.style.setProperty("--confetti-rot", Math.random() * 720 - 360 + "deg");
+      piece.style.setProperty("--confetti-duration", 2.2 + Math.random() * 1.6 + "s");
+      piece.style.setProperty("--confetti-delay", Math.random() * 0.35 + "s");
+      piece.style.width = 5 + Math.random() * 5 + "px";
+      piece.style.height = 8 + Math.random() * 8 + "px";
+      frag.appendChild(piece);
+    }
+    container.appendChild(frag);
+    window.setTimeout(() => {
+      container.innerHTML = "";
+    }, 4500);
+  }
+
+  const professionalCareCard = document.getElementById("professionalCareCard");
+  const professionalCareConfetti = document.getElementById("professionalCareConfetti");
+  if (professionalCareCard && professionalCareConfetti && "IntersectionObserver" in window) {
+    const careConfettiObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          fireCarePlansConfetti(professionalCareConfetti);
+          careConfettiObserver.unobserve(professionalCareCard);
+        });
+      },
+      { rootMargin: "0px 0px -5% 0px", threshold: 0.55 }
+    );
+    careConfettiObserver.observe(professionalCareCard);
+  } else if (professionalCareConfetti) {
+    fireCarePlansConfetti(professionalCareConfetti);
   }
 
   if (quoteForm) {
